@@ -1,0 +1,148 @@
+2025-07-10 18:41:14,903 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 18:41:40,287 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 18:41:59,445 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 18:42:00,538 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 18:42:25,607 - notifications - ERROR - Alerta de error: ¡Error! - El nombre de usuario ya existe
+2025-07-10 18:42:25,608 - notifications - INFO - Alerta establecida: {'message': 'El nombre de usuario ya existe', 'type': 'error', 'title': '¡Error!'}
+2025-07-10 18:42:25,625 - notifications - INFO - Alerta obtenida: {'message': 'El nombre de usuario ya existe', 'title': '¡Error!', 'type': 'error'}
+2025-07-10 18:43:18,353 - notifications - ERROR - Alerta de error: ¡Error! - El nombre de usuario ya existe
+2025-07-10 18:43:18,353 - notifications - INFO - Alerta establecida: {'message': 'El nombre de usuario ya existe', 'type': 'error', 'title': '¡Error!'}
+2025-07-10 18:43:18,367 - notifications - INFO - Alerta obtenida: {'message': 'El nombre de usuario ya existe', 'title': '¡Error!', 'type': 'error'}
+2025-07-10 18:44:16,666 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 18:44:17,164 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 18:44:33,192 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 18:44:33,658 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 18:44:49,409 - notifications - ERROR - Alerta de error: ¡Error! - El correo electrónico ya está registrado
+2025-07-10 18:44:49,409 - notifications - INFO - Alerta establecida: {'message': 'El correo electrónico ya está registrado', 'type': 'error', 'title': '¡Error!'}
+2025-07-10 18:44:49,420 - notifications - INFO - Alerta obtenida: {'message': 'El correo electrónico ya está registrado', 'title': '¡Error!', 'type': 'error'}
+2025-07-10 18:48:46,451 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 18:48:46,990 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 18:54:21,645 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 18:54:21,959 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 18:56:02,982 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 18:56:03,001 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 18:56:13,898 - notifications - ERROR - Alerta de error: ¡Error! - El correo electrónico ya está registrado
+2025-07-10 18:56:13,899 - notifications - INFO - Alerta establecida: {'message': 'El correo electrónico ya está registrado', 'type': 'error', 'title': '¡Error!'}
+2025-07-10 18:56:13,917 - notifications - INFO - Alerta obtenida: {'message': 'El correo electrónico ya está registrado', 'title': '¡Error!', 'type': 'error'}
+2025-07-10 18:57:18,048 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 18:57:18,051 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 18:57:31,744 - notifications - ERROR - Alerta de error: ¡Error! - El correo electrónico ya está registrado
+2025-07-10 18:57:31,744 - notifications - INFO - Alerta establecida: {'message': 'El correo electrónico ya está registrado', 'type': 'error', 'title': '¡Error!'}
+2025-07-10 18:57:31,755 - notifications - INFO - Alerta obtenida: {'message': 'El correo electrónico ya está registrado', 'title': '¡Error!', 'type': 'error'}
+2025-07-10 19:04:39,006 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 19:04:39,006 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 19:04:57,409 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 19:04:57,431 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 19:16:21,207 - notifications - ERROR - Alerta de error: ¡Error! - El correo electrónico ya está registrado
+2025-07-10 19:16:21,210 - notifications - INFO - Alerta establecida: {'message': 'El correo electrónico ya está registrado', 'type': 'error', 'title': '¡Error!'}
+2025-07-10 19:16:21,237 - notifications - INFO - Alerta obtenida: {'message': 'El correo electrónico ya está registrado', 'title': '¡Error!', 'type': 'error'}
+2025-07-10 19:22:48,052 - notifications - ERROR - Alerta de error: ¡Error! - El correo electrónico ya está registrado
+2025-07-10 19:22:48,053 - notifications - INFO - Alerta establecida: {'message': 'El correo electrónico ya está registrado', 'type': 'error', 'title': '¡Error!'}
+2025-07-10 19:22:48,080 - notifications - INFO - Alerta obtenida: {'message': 'El correo electrónico ya está registrado', 'title': '¡Error!', 'type': 'error'}
+2025-07-10 19:26:35,866 - notifications - ERROR - Alerta de error: ¡Error! - El correo electrónico ya está registrado
+2025-07-10 19:26:35,867 - notifications - INFO - Alerta establecida: {'message': 'El correo electrónico ya está registrado', 'type': 'error', 'title': '¡Error!'}
+2025-07-10 19:26:35,887 - notifications - INFO - Alerta obtenida: {'message': 'El correo electrónico ya está registrado', 'title': '¡Error!', 'type': 'error'}
+2025-07-10 21:05:29,484 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:05:29,484 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:05:40,781 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:05:42,549 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:05:55,051 - notifications - ERROR - Alerta de error: ¡Error! - El correo electrónico ya está registrado
+2025-07-10 21:05:55,052 - notifications - INFO - Alerta establecida: {'message': 'El correo electrónico ya está registrado', 'type': 'error', 'title': '¡Error!'}
+2025-07-10 21:05:55,083 - notifications - INFO - Alerta obtenida: {'message': 'El correo electrónico ya está registrado', 'title': '¡Error!', 'type': 'error'}
+2025-07-10 21:08:12,193 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:08:12,193 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:08:12,194 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:08:25,373 - notifications - ERROR - Alerta de error: ¡Error! - El correo electrónico ya está registrado
+2025-07-10 21:08:25,374 - notifications - INFO - Alerta establecida: {'message': 'El correo electrónico ya está registrado', 'type': 'error', 'title': '¡Error!'}
+2025-07-10 21:08:25,394 - notifications - INFO - Alerta obtenida: {'message': 'El correo electrónico ya está registrado', 'title': '¡Error!', 'type': 'error'}
+2025-07-10 21:08:54,356 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:08:54,476 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:08:54,486 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:09:54,953 - notifications - INFO - Alerta obtenida: {'message': 'El correo electrónico ya está registrado', 'title': '¡Error!', 'type': 'error'}
+2025-07-10 21:10:10,747 - notifications - ERROR - Alerta de error: ¡Error! - El correo electrónico ya está registrado
+2025-07-10 21:10:10,749 - notifications - INFO - Alerta establecida: {'message': 'El correo electrónico ya está registrado', 'type': 'error', 'title': '¡Error!'}
+2025-07-10 21:10:10,769 - notifications - INFO - Alerta obtenida: {'message': 'El correo electrónico ya está registrado', 'title': '¡Error!', 'type': 'error'}
+2025-07-10 21:11:07,636 - notifications - ERROR - Alerta de error: ¡Error! - La contraseña debe tener al menos 6 caracteres
+2025-07-10 21:11:07,638 - notifications - INFO - Alerta establecida: {'message': 'La contraseña debe tener al menos 6 caracteres', 'type': 'error', 'title': '¡Error!'}
+2025-07-10 21:11:07,658 - notifications - INFO - Alerta obtenida: {'message': 'La contraseña debe tener al menos 6 caracteres', 'title': '¡Error!', 'type': 'error'}
+2025-07-10 21:12:21,519 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:12:21,552 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:12:21,559 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:12:30,653 - notifications - ERROR - Alerta de error: ¡Error! - La contraseña debe tener al menos 6 caracteres
+2025-07-10 21:12:30,657 - notifications - INFO - Alerta establecida: {'message': 'La contraseña debe tener al menos 6 caracteres', 'type': 'error', 'title': '¡Error!'}
+2025-07-10 21:12:30,676 - notifications - INFO - Alerta obtenida: {'message': 'La contraseña debe tener al menos 6 caracteres', 'title': '¡Error!', 'type': 'error'}
+2025-07-10 21:12:57,522 - notifications - ERROR - Alerta de error: ¡Error! - Por favor ingresa un correo electrónico válido
+2025-07-10 21:12:57,524 - notifications - INFO - Alerta establecida: {'message': 'Por favor ingresa un correo electrónico válido', 'type': 'error', 'title': '¡Error!'}
+2025-07-10 21:12:57,543 - notifications - INFO - Alerta obtenida: {'message': 'Por favor ingresa un correo electrónico válido', 'title': '¡Error!', 'type': 'error'}
+2025-07-10 21:13:08,438 - notifications - ERROR - Alerta de error: ¡Error! - El correo electrónico ya está registrado
+2025-07-10 21:13:08,440 - notifications - INFO - Alerta establecida: {'message': 'El correo electrónico ya está registrado', 'type': 'error', 'title': '¡Error!'}
+2025-07-10 21:13:08,463 - notifications - INFO - Alerta obtenida: {'message': 'El correo electrónico ya está registrado', 'title': '¡Error!', 'type': 'error'}
+2025-07-10 21:13:22,995 - notifications - INFO - Alerta de éxito: ¡Éxito! - Usuario registrado exitosamente. Ya puedes iniciar sesión
+2025-07-10 21:13:22,996 - notifications - INFO - Alerta establecida: {'message': 'Usuario registrado exitosamente. Ya puedes iniciar sesión', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-10 21:13:23,015 - notifications - INFO - Alerta obtenida: {'message': 'Usuario registrado exitosamente. Ya puedes iniciar sesión', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-10 21:14:07,445 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:14:07,511 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:14:07,772 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:14:20,498 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:14:20,507 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:14:20,516 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:14:49,575 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:14:49,647 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:14:49,706 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:15:11,337 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:15:11,351 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:15:11,355 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:15:58,235 - notifications - INFO - Alerta de éxito: ¡Éxito! - Usuario registrado exitosamente. Ya puedes iniciar sesión
+2025-07-10 21:15:58,236 - notifications - INFO - Alerta establecida: {'message': 'Usuario registrado exitosamente. Ya puedes iniciar sesión', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-10 21:15:58,266 - notifications - INFO - Alerta obtenida: {'message': 'Usuario registrado exitosamente. Ya puedes iniciar sesión', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-10 21:23:42,827 - notifications - INFO - Alerta de éxito: Hola Sebastian - ¡Bienvenido de vuelta!
+2025-07-10 21:23:42,828 - notifications - INFO - Alerta establecida: {'message': '¡Bienvenido de vuelta!', 'type': 'success', 'title': 'Hola Sebastian'}
+2025-07-10 21:23:42,887 - notifications - INFO - Alerta obtenida: {'message': '¡Bienvenido de vuelta!', 'title': 'Hola Sebastian', 'type': 'success'}
+2025-07-10 21:24:33,110 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:24:33,113 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:24:33,114 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:24:44,079 - notifications - INFO - Alerta de éxito: Hola Sebastian - ¡Bienvenido de vuelta!
+2025-07-10 21:24:44,080 - notifications - INFO - Alerta establecida: {'message': '¡Bienvenido de vuelta!', 'type': 'success', 'title': 'Hola Sebastian'}
+2025-07-10 21:24:44,105 - notifications - INFO - Alerta obtenida: {'message': '¡Bienvenido de vuelta!', 'title': 'Hola Sebastian', 'type': 'success'}
+2025-07-10 21:26:07,792 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:26:08,481 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:26:08,520 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:44:21,780 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:44:21,780 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:44:21,781 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:46:03,783 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:46:03,938 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:46:03,953 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:46:30,382 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:46:31,208 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:46:31,284 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:47:22,768 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:47:22,794 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:47:22,800 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 21:55:51,897 - notifications - INFO - Alerta informativa: Información - Has cerrado sesión exitosamente
+2025-07-10 21:55:51,899 - notifications - INFO - Alerta establecida: {'message': 'Has cerrado sesión exitosamente', 'type': 'info', 'title': 'Información'}
+2025-07-10 21:55:51,937 - notifications - INFO - Alerta obtenida: {'message': 'Has cerrado sesión exitosamente', 'title': 'Información', 'type': 'info'}
+2025-07-10 21:56:10,752 - notifications - INFO - Alerta de éxito: Hola Sebastian - ¡Bienvenido de vuelta!
+2025-07-10 21:56:10,753 - notifications - INFO - Alerta establecida: {'message': '¡Bienvenido de vuelta!', 'type': 'success', 'title': 'Hola Sebastian'}
+2025-07-10 21:56:10,774 - notifications - INFO - Alerta obtenida: {'message': '¡Bienvenido de vuelta!', 'title': 'Hola Sebastian', 'type': 'success'}
+2025-07-10 22:05:36,960 - notifications - INFO - Alerta informativa: Información - Has cerrado sesión exitosamente
+2025-07-10 22:05:36,978 - notifications - INFO - Alerta establecida: {'message': 'Has cerrado sesión exitosamente', 'type': 'info', 'title': 'Información'}
+2025-07-10 22:05:37,039 - notifications - INFO - Alerta obtenida: {'message': 'Has cerrado sesión exitosamente', 'title': 'Información', 'type': 'info'}
+2025-07-10 22:07:36,524 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 22:07:36,527 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 22:07:36,814 - app - INFO - Sistema de logging configurado correctamente
+2025-07-10 22:07:45,349 - notifications - INFO - Alerta de éxito: Hola Sebastian - ¡Bienvenido de vuelta!
+2025-07-10 22:07:45,351 - notifications - INFO - Alerta establecida: {'message': '¡Bienvenido de vuelta!', 'type': 'success', 'title': 'Hola Sebastian'}
+2025-07-10 22:07:45,414 - notifications - INFO - Alerta obtenida: {'message': '¡Bienvenido de vuelta!', 'title': 'Hola Sebastian', 'type': 'success'}
+2025-07-10 22:07:58,858 - notifications - INFO - Alerta de éxito: ¡Éxito! - Has cerrado sesión exitosamente
+2025-07-10 22:07:58,860 - notifications - INFO - Alerta establecida: {'message': 'Has cerrado sesión exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-10 22:07:58,921 - notifications - INFO - Alerta obtenida: {'message': 'Has cerrado sesión exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-10 22:10:18,930 - notifications - ERROR - Alerta de error: ¡Error! - El correo electrónico ya está registrado
+2025-07-10 22:10:18,932 - notifications - INFO - Alerta establecida: {'message': 'El correo electrónico ya está registrado', 'type': 'error', 'title': '¡Error!'}
+2025-07-10 22:10:18,962 - notifications - INFO - Alerta obtenida: {'message': 'El correo electrónico ya está registrado', 'title': '¡Error!', 'type': 'error'}
+2025-07-10 22:14:14,465 - notifications - INFO - Alerta de éxito: ¡Éxito! - Usuario registrado exitosamente. Ya puedes iniciar sesión
+2025-07-10 22:14:14,467 - notifications - INFO - Alerta establecida: {'message': 'Usuario registrado exitosamente. Ya puedes iniciar sesión', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-10 22:14:14,490 - notifications - INFO - Alerta obtenida: {'message': 'Usuario registrado exitosamente. Ya puedes iniciar sesión', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-10 22:14:27,716 - notifications - INFO - Alerta de éxito: Hola Rosa Melan - ¡Bienvenido de vuelta!
+2025-07-10 22:14:27,718 - notifications - INFO - Alerta establecida: {'message': '¡Bienvenido de vuelta!', 'type': 'success', 'title': 'Hola Rosa Melan'}
+2025-07-10 22:14:27,747 - notifications - INFO - Alerta obtenida: {'message': '¡Bienvenido de vuelta!', 'title': 'Hola Rosa Melan', 'type': 'success'}

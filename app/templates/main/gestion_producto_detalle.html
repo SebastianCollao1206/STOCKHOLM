@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="d-flex container-fluid mt-4">
+        <div class="d-flex justify-content-center w-100">
+            <h2 class="text-center fw-semibold">
+                {% if modo == 'editar' %}
+                Editar Producto de Registro
+                {% else %}
+                Agregar Producto a Registro
+                {% endif %}
+            </h2>
+        </div>
+        <div class="text-center justify-content-end">
+            <a class="text-decoration-none">
+                <button type="button" class="btn btn-primary text-white btn-volver border-0" onclick="history.back()">
+                    <i class="bi bi-arrow-bar-left mx-3"></i>Volver
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <form action="" method="POST">
+
+        <div class="row mb-4 mt-5 d-flex justify-content-center align-items-center gap-4">
+
+            <div class="col-md-5">
+                <label for="producto" class="form-label fw-medium">Producto</label>
+                <select id="producto" name="producto" class="form-select" required>
+                    <option disabled value="">Selecciona un producto</option>
+                    {% for p in productos %}
+                    <option value="{{ p.id }}" {% if detalle and detalle.producto_id==p.id %}selected{% endif %}>
+                        {{ p.nombre }}
+                    </option>
+                    {% endfor %}
+                </select>
+                <div class="mt-2">
+                    <small class="text-muted">¿No encuentras el producto?
+                        <a href="/presentacion/agregar" class="text-primary text-decoration-none">Agrégalo aquí</a>
+                    </small>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <label for="vendedor" class="form-label fw-medium">Vendedor</label>
+                <select id="vendedor" name="vendedor" class="form-select" required>
+                    <option disabled value="">Selecciona un vendedor</option>
+                    {% for v in vendedores %}
+                    <option value="{{ v.id }}" {% if detalle and detalle.vendedor_id==v.id %}selected{% endif %}>
+                        {{ v.nombre }}
+                    </option>
+                    {% endfor %}
+                </select>
+                <div class="mt-2">
+                    <small class="text-muted">¿No encuentras el vendedor?
+                        <a href="/vendedor/agregar" class="text-primary text-decoration-none">Agrégalo aquí</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4 d-flex justify-content-center align-items-center gap-4">
+
+            <div class="col-md-5">
+                <label for="cantidad" class="form-label fw-medium">Cantidad</label>
+                <input type="number" id="cantidad" name="cantidad" class="form-control" min="1" placeholder="Ej: 10"
+                    value="{% if detalle %}{{ detalle.cantidad }}{% endif %}" required>
+            </div>
+
+            <div class="col-md-5">
+                <label for="descuento" class="form-label fw-medium">Descuento (%)</label>
+                <input type="number" id="descuento" name="descuento" class="form-control" min="0" max="100"
+                    placeholder="Ej: 15" value="{% if detalle %}{{ detalle.descuento }}{% endif %}">
+            </div>
+        </div>
+
+        <div class="row mb-4 d-flex justify-content-center">
+            <div class="col-md-6">
+                <label for="fecha-vencimiento" class="form-label fw-medium">Fecha de vencimiento</label>
+                <input type="date" id="fecha-vencimiento" name="fecha_vencimiento" class="form-control"
+                    value="{% if detalle %}{{ detalle.fecha_vencimiento|date('Y-m-d') }}{% endif %}" required>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-5">
+            <button type="submit" class="btn btn-agregar btn-primary border-0 text-white">
+                {% if modo == 'editar' %}
+                <i class="bi bi-pencil-square me-2"></i>Actualizar Producto
+                {% else %}
+                <i class="bi bi-plus-circle me-2"></i>Agregar al Registri
+                {% endif %}
+            </button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

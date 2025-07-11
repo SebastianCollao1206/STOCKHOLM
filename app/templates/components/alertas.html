@@ -1,0 +1,26 @@
+{% macro render_alerts(alert) %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function showAlert(message, type, title = null) {
+        const config = {
+            text: message,
+            icon: type,
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#3085d6'
+        };
+        if (title) {
+            config.title = title;
+        }
+        Swal.fire(config);
+    }
+</script>
+{% if alert %}
+<script>
+    showAlert(
+        "{{ alert.message }}",
+        "{{ alert.type }}",
+        "{{ alert.title if alert.title else '' }}"
+    );
+</script>
+{% endif %}
+{% endmacro %}

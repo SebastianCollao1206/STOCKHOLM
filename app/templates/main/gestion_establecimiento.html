@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="d-flex container-fluid mt-4">
+        <div class="d-flex justify-content-center w-100">
+            <h2 class="text-center fw-semibold">
+                {% if modo == 'editar' %}
+                Editar Establecimiento
+                {% else %}
+                Agregar Establecimiento
+                {% endif %}
+            </h2>
+        </div>
+        <div class="text-center justify-content-end">
+            <a class="text-decoration-none">
+                <button type="button" class="btn btn-primary text-white btn-volver border-0" onclick="history.back()">
+                    <i class="bi bi-arrow-bar-left mx-3"></i>Volver
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <form action="" method="POST">
+        <div class="row mb-4 mt-5 d-flex justify-content-center align-items-center gap-4">
+            <div class="col-md-5">
+                <label for="nombre-establecimiento" class="form-label fw-medium">Nombre del establecimiento</label>
+                <input type="text" id="nombre-establecimiento" name="nombre" class="form-control"
+                    placeholder="Ej: Supermercado MiVeci" value="{% if est %}{{ est.nombre }}{% endif %}" required>
+            </div>
+            <div class="col-md-5">
+                <label for="direccion-establecimiento" class="form-label fw-medium">Dirección</label>
+                <input type="text" id="direccion-establecimiento" name="direccion" class="form-control"
+                    placeholder="Ej: Av. Perú 1234" value="{% if est %}{{ est.direccion }}{% endif %}" required>
+            </div>
+        </div>
+
+        <div class="row d-flex mt-4 mb-3 justify-content-center align-items-center gap-4">
+            <div class="col-md-5">
+                <label for="hora-apertura" class="form-label fw-medium">Hora de apertura</label>
+                <input type="time" id="hora-apertura" name="hora_apertura" class="form-control"
+                    value="{% if est %}{{ est.hora_apertura }}{% endif %}" required>
+            </div>
+            <div class="col-md-5">
+                <label for="hora-cierre" class="form-label fw-medium">Hora de cierre</label>
+                <input type="time" id="hora-cierre" name="hora_cierre" class="form-control"
+                    value="{% if est %}{{ est.hora_cierre }}{% endif %}" required>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-5">
+            <button type="submit" class="btn btn-agregar btn-primary border-0 text-white">
+                {% if modo == 'editar' %}
+                <i class="bi bi-pencil-square me-2"></i>Actualizar Establecimiento
+                {% else %}
+                <i class="bi bi-plus-circle me-2"></i>Agregar Establecimiento
+                {% endif %}
+            </button>
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,160 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+.logo img{
+    width: 180px;
+    max-width: 100%
+}
+.logo:hover {
+    transition: all 0.3s ease-in-out; 
+    transform: scale(1.1);
+}
+
+.profile-image {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.sidebar-menu{
+    height: 86vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.sidebar-menu{
+    position: sticky;
+    top: 20px;
+    
+}
+.menu-button {
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 1rem;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.menu-collapse {
+    padding-left: 2rem;
+}
+
+.vertical-divider {
+    width: 1px;
+    height: 24px;
+    background-color: #555;
+    margin: 0 1rem;
+}
+.texto-admin{
+    width: 200px;
+}
+.offcanvas-body{
+    background-color: #004492;
+}
+.cuerpito{
+    background-color: #fff;
+}
+.sidebar-navegacion{
+    font-size: 13px;
+}
+.btn-diseño{
+    background-color: #FD1F15;
+    width: 160px;
+}
+.btn-diseño:hover{
+    background-color: #004492;
+}
+.btn-filtrar{
+    background-color: #004492;
+}
+.btn-filtrar:hover{
+    background-color: #FD1F15;
+}
+.btn-agregar{
+    background-color: #FD1F15;
+}
+.btn-agregar:hover{
+    background-color: #004492;
+}
+.btn-volver{
+    background-color: #FD1F15;
+    width: 120px;
+}
+.btn-volver:hover{
+    background-color: #004492;
+}
+.btn-generar{
+    background-color: #004492;
+}
+.btn-usuario{
+    background-color: #FD1F15;
+}
+.btn-usuario:hover{
+    background-color: #004492;
+}
+.btn-excel{
+    margin-left: 0px;
+}
+.chart-container {
+    height: 390px;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 15px;
+    text-align: center;
+}
+.product-item {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 0.9rem;
+}
+.notification {
+    display: block;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    color: #111;
+}
+.notification:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+.card {
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+.card-header {
+    background-color:#667eea;
+    color: white;
+    border-bottom: none;
+}
+.card-title {
+    margin-bottom: 0;
+}
+
+tbody td {
+    vertical-align: middle;
+    text-align: center;
+}
+@media (max-width: 767.50px) {
+    .btn-volver{
+        display: none;
+    }
+}
+@media (max-width: 991.50px) {
+    #offcanvasNavbar .offcanvas-header{
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+    .sideber{
+        display: none;
+    }
+}

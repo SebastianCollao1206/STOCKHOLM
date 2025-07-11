@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="d-flex container-fluid mt-4">
+        <div class="d-flex justify-content-center w-100">
+            <h2 class="text-center fw-semibold">
+                Agregar Producto
+            </h2>
+        </div>
+        <div class="text-center justify-content-end">
+            <a class="text-decoration-none">
+                <button type="button" class="btn btn-primary text-white btn-volver border-0" onclick="history.back()">
+                    <i class="bi bi-arrow-bar-left mx-3"></i>Volver
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <form action="" method="POST">
+
+        <div class="row mb-4 mt-5 d-flex justify-content-center align-items-center gap-4">
+            <div class="col-md-5">
+                <label for="nombre-producto" class="form-label fw-medium">Nombre del producto</label>
+                <select id="nombre-producto" name="nombre_producto" class="form-select" required>
+                    <option disabled selected value="">Selecciona un producto</option>
+                </select>
+                <div class="mt-2">
+                    <small class="text-muted">¿No encuentras el producto?
+                        <a href="/producto/agregar" class="text-primary text-decoration-none">Agrégalo aquí</a>
+                    </small>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <label for="marca" class="form-label fw-medium">Marca</label>
+                <select id="marca" name="marca" class="form-select" required>
+                    <option disabled selected value="">Selecciona una marca</option>
+                </select>
+                <div class="mt-2">
+                    <small class="text-muted">¿No encuentras la marca?
+                        <a href="/marca/agregar" class="text-primary text-decoration-none">Agrégala aquí</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4 d-flex justify-content-center align-items-center gap-4">
+            <div class="col-md-5">
+                <label for="variacion" class="form-label fw-medium">Variación</label>
+                <input type="text" id="variacion" name="variacion" class="form-control"
+                    placeholder="Ej: Entera, Deslactosada" required>
+            </div>
+
+            <div class="col-md-5">
+                <label for="empaque" class="form-label fw-medium">Tipo de empaque</label>
+                <select id="empaque" name="empaque" class="form-select" required>
+                    <option disabled selected value="">Selecciona un tipo</option>
+                    <option>Botella</option>
+                    <option>Bolsa</option>
+                    <option>Caja</option>
+                    <option>Lata</option>
+                    <option>Pack</option>
+                    <option>Otro</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-4 d-flex justify-content-center align-items-center gap-4">
+            <div class="col-md-5">
+                <label for="unidad-medida" class="form-label fw-medium">Unidad de medida</label>
+                <select id="unidad-medida" name="unidad_medida" class="form-select" required>
+                    <option disabled selected value="">Selecciona una unidad</option>
+                    <option>Litros</option>
+                    <option>Mililitros</option>
+                    <option>Gramos</option>
+                    <option>Kilogramos</option>
+                    <option>Unidades</option>
+                    <option>Otros</option>
+                </select>
+            </div>
+
+            <div class="col-md-5">
+                <label for="unidades-empaque" class="form-label fw-medium">Unidades por empaque</label>
+                <input type="number" min="1" id="unidades-empaque" name="unidades_empaque" class="form-control"
+                    placeholder="Ej: 6" required>
+            </div>
+        </div>
+
+        <div class="row mb-4 d-flex justify-content-center align-items-center gap-4">
+            <div class="col-md-5">
+                <label for="precio-empaque" class="form-label fw-medium">Precio por empaque (S/)</label>
+                <input type="number" step="0.01" min="0" id="precio-empaque" name="precio_empaque" class="form-control"
+                    placeholder="Ej: 12.50" required>
+            </div>
+
+            <div class="col-md-5">
+                <label for="valoracion" class="form-label fw-medium">Valoración (1 al 10)</label>
+                <input type="number" id="valoracion" name="valoracion" class="form-control" placeholder="Ej: 7" min="1"
+                    max="10" required>
+            </div>
+
+        </div>
+
+        <div class="row mb-4 d-flex justify-content-center">
+            <div class="col-md-9">
+                <label for="imagen" class="form-label fw-medium">URL de la imagen del producto</label>
+                <input type="url" id="imagen" name="imagen" class="form-control"
+                    placeholder="https://ejemplo.com/imagen.jpg">
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-5">
+            <button type="submit" class="btn btn-agregar btn-primary border-0 text-white">
+                <i class="bi bi-plus-circle me-2"></i>Agregar Producto
+            </button>
+        </div>
+    </form>
+
+
+</div>
+
+{% endblock %}

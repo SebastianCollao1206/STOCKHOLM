@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="row d-flex container-fluid justify-content-center gy-3">
+        <div class="col-md-7 d-flex justify-content-center">
+            <h2 class="text-center fw-semibold">Detalle Registro</h2>
+        </div>
+        <div class="col-md-5 d-flex text-center  justify-content-center">
+            <a class="text-decoration-none">
+                <button type="button" class="btn btn-primary text-white btn-volver border-0" onclick="history.back()">
+                    <i class="bi bi-arrow-bar-left mx-3"></i>Volver
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <div class="table-responsive mt-5">
+        <table class="table table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Producto</th>
+                    <th>Información</th>
+                    <th>Imagen</th>
+                    <th>Fecha vencimiento</th>
+                    <th>Cantidad</th>
+                    <th>Descuento</th>
+                    <th>Precio compra</th>
+                    <th>Vendedor</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Arroz Extra</td>
+                    <td>
+                        <button class="btn btn-info btn-sm rounded text-white" data-bs-toggle="modal"
+                            data-bs-target="#infoModal"
+                            onclick="setModalContent('Arroz Extra', 'Arroz de grano largo, ideal para el consumo diario.')">
+                            <i class="bi bi-eye me-1"></i>Ver
+                        </button>
+                    </td>
+                    <td>
+                        <img src="https://corporacionliderperu.com/50720-large_default/gloria-leche-tarro-azul-gde-x-390-gr.jpg"
+                            alt="Producto" class="img-fluid rounded" style="width: 50px;">
+                    </td>
+                    <td>2025-12-31</td>
+                    <td>10</td>
+                    <td>5%</td>
+                    <td>S/ 3.00</td>
+                    <td>Juan Pérez</td>
+                    <td>S/ 28.50</td>
+                </tr>
+                <tr>
+                    <td>Leche Gloria</td>
+                    <td>
+                        <button class="btn btn-info btn-sm rounded text-white" data-bs-toggle="modal"
+                            data-bs-target="#infoModal"
+                            onclick="setModalContent('Leche Gloria', 'Lata de leche evaporada, entera, marca Gloria.')">
+                            <i class="bi bi-eye me-1"></i>Ver
+                        </button>
+                    </td>
+                    <td>
+                        <img src="https://corporacionliderperu.com/50720-large_default/gloria-leche-tarro-azul-gde-x-390-gr.jpg"
+                            alt="Producto" class="img-fluid rounded" style="width: 50px;">
+                    </td>
+                    <td>2026-01-15</td>
+                    <td>6</td>
+                    <td>0%</td>
+                    <td>S/ 4.20</td>
+                    <td>María Gómez</td>
+                    <td>S/ 25.20</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content rounded-4">
+
+                <div class="modal-header align-items-center">
+                    <img src="https://corporacionliderperu.com/50720-large_default/gloria-leche-tarro-azul-gde-x-390-gr.jpg"
+                        alt="Producto" id="modalProductImage" style="width: 50px; height: auto;" class="rounded">
+                    <h5 class="modal-title fw-semibold ms-3" id="infoModalLabel">Tarro de leche - deslactosada</h5>
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
+                </div>
+
+
+                <div class="modal-body">
+                    <table class="table table-sm table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="row">Marca:</th>
+                                <td id="modalMarca">Gloria</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Unidad:</th>
+                                <td id="modalUnidad">Lata</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Cantidad por unidad:</th>
+                                <td id="modalCantidadUnidad">410 ml</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Valoración:</th>
+                                <td id="modalValoracion">4.5 / 10</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Precio:</th>
+                                <td id="modalPrecio">S/ 4.20</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

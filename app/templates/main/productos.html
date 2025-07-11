@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="row d-flex container-fluid justify-content-center gy-3">
+        <div class="col-md-7 d-flex justify-content-center">
+            <h2 class="text-center fw-semibold">Productos</h2>
+        </div>
+        <div class="col-md-5 d-flex text-center  justify-content-center">
+            <a class="text-decoration-none" href="/producto/agregar">
+                <button type="button" class="btn text-white btn-primary btn-usuario border-0">Agregar producto<i
+                        class="bi bi-plus-lg mx-3"></i></button>
+            </a>
+        </div>
+    </div>
+
+    <div class="table-responsive mt-5">
+        <table class="table table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Empaque</th>
+                    <th>Producto</th>
+                    <th>Variación</th>
+                    <th>Marca</th>
+                    <th>Unidad</th>
+                    <th>Cantidad por unidad</th>
+                    <th>Valoración producto</th>
+                    <th>Precio</th>
+                    <th>Imagen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Caja</td>
+                    <td>Arroz Extra</td>
+                    <td>Grano largo</td>
+                    <td>Costeño</td>
+                    <td>Kg</td>
+                    <td>5</td>
+                    <td>4.5 / 5</td>
+                    <td>S/ 20.00</td>
+                    <td>
+                        <img src="https://corporacionliderperu.com/50720-large_default/gloria-leche-tarro-azul-gde-x-390-gr.jpg" alt="Arroz Extra" style="width: 50px;"
+                            class="rounded">
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td>Lata</td>
+                    <td>Leche Gloria</td>
+                    <td>Entera</td>
+                    <td>Gloria</td>
+                    <td>Lata</td>
+                    <td>410 ml</td>
+                    <td>4.8 / 5</td>
+                    <td>S/ 4.20</td>
+                    <td>
+                        <img src="https://corporacionliderperu.com/50720-large_default/gloria-leche-tarro-azul-gde-x-390-gr.jpg" alt="Leche Gloria" style="width: 50px;"
+                            class="rounded">
+                    </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

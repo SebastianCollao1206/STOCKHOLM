@@ -1,0 +1,340 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-3">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Reportes</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4 class="card-title">5 Productos Más Comprados</h4>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="mostBoughtProductsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4 class="card-title">5 Productos Más Valorados</h4>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="mostRatedProductsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4 class="card-title">3 Vendedores Más Valorados</h4>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="topSellersChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4 class="card-title">5 Productos Más Usados</h4>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="mostUsedProductsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4 class="card-title">Gastos Mensuales del Año</h4>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container-meses">
+                        <canvas id="monthlyExpensesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const colors = [
+            'rgba(54, 162, 235, 0.8)',   
+            'rgba(255, 99, 132, 0.8)',  
+            'rgba(75, 192, 192, 0.8)',   
+            'rgba(255, 206, 86, 0.8)',   
+            'rgba(153, 102, 255, 0.8)', 
+            'rgba(255, 159, 64, 0.8)',   
+            'rgba(199, 199, 199, 0.8)'   
+        ];
+
+        const borderColors = [
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 99, 132, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+            'rgba(199, 199, 199, 1)'
+        ];
+
+        const mostBoughtCtx = document.getElementById('mostBoughtProductsChart').getContext('2d');
+        new Chart(mostBoughtCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Smartphone', 'Laptop', 'Audífonos', 'Tablet', 'Smartwatch'],
+                datasets: [{
+                    data: [450, 320, 280, 200, 150],
+                    backgroundColor: colors.slice(0, 5),
+                    borderColor: borderColors.slice(0, 5),
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            usePointStyle: true
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Top 5 Productos por Unidades Vendidas',
+                        padding: {
+                            top: 10,
+                            bottom: 20
+                        }
+                    }
+                }
+            }
+        });
+
+        const mostRatedCtx = document.getElementById('mostRatedProductsChart').getContext('2d');
+        new Chart(mostRatedCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Cámara Pro', 'Laptop Gaming', 'Auriculares Premium', 'Tablet Pro', 'Smartphone Plus'],
+                datasets: [{
+                    data: [9.5, 9.2, 8.9, 8.7, 8.5],
+                    backgroundColor: colors.slice(1, 6),
+                    borderColor: borderColors.slice(1, 6),
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            usePointStyle: true
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Top 5 Productos por Valoración (1-10)',
+                        padding: {
+                            top: 10,
+                            bottom: 20
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                return context.label + ': ' + context.parsed + '/10';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const topSellersCtx = document.getElementById('topSellersChart').getContext('2d');
+        new Chart(topSellersCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Carlos Mendoza', 'Ana García', 'Luis Torres'],
+                datasets: [{
+                    data: [9.3, 9.1, 8.8],
+                    backgroundColor: colors.slice(2, 5),
+                    borderColor: borderColors.slice(2, 5),
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            usePointStyle: true
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Top 3 Vendedores por Valoración',
+                        padding: {
+                            top: 10,
+                            bottom: 20
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                return context.label + ': ' + context.parsed + '/10';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const mostUsedCtx = document.getElementById('mostUsedProductsChart').getContext('2d');
+        new Chart(mostUsedCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['WhatsApp', 'Instagram', 'YouTube', 'Gmail', 'Maps'],
+                datasets: [{
+                    data: [85, 72, 68, 65, 58],
+                    backgroundColor: colors.slice(0, 5),
+                    borderColor: borderColors.slice(0, 5),
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            usePointStyle: true
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Top 5 Productos por Frecuencia de Uso (%)',
+                        padding: {
+                            top: 10,
+                            bottom: 20
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                return context.label + ': ' + context.parsed + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const monthlyExpensesCtx = document.getElementById('monthlyExpensesChart').getContext('2d');
+        new Chart(monthlyExpensesCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                datasets: [{
+                    label: 'Gastos Mensuales',
+                    data: [12000, 15000, 13500, 16000, 14500, 17000,
+                            16500, 18000, 15750, 19000, 17250, 20000],
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 2,
+                    borderRadius: 6,
+                    borderSkipped: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Gastos ($)',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        },
+                        ticks: {
+                            callback: function (value) {
+                                return '$' + value.toLocaleString();
+                            }
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Meses',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Gastos Mensuales del Año 2024',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        },
+                        padding: {
+                            top: 10,
+                            bottom: 20
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                return 'Gastos: $' + context.parsed.y.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+{% endblock %}

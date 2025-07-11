@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="row d-flex container-fluid justify-content-center gy-3">
+        <div class="col-md-7 d-flex justify-content-center">
+            <h2 class="text-center fw-semibold">Establecimientos</h2>
+        </div>
+        <div class="col-md-5 d-flex text-center  justify-content-center">
+            <a class="text-decoration-none" href="/establecimiento/agregar">
+                <button type="button" class="btn text-white btn-primary btn-usuario border-0">Agregar establecimiento<i
+                        class="bi bi-plus-lg mx-3"></i></button>
+            </a>
+        </div>
+    </div>
+
+    <div class="table-responsive mt-5">
+        <table class="table table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Dirección</th>
+                    <th>Hora de apertura</th>
+                    <th>Hora de cierre</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Supermercado MiVeci</td>
+                    <td>Av. Perú 1234</td>
+                    <td>08:00</td>
+                    <td>21:00</td>
+                    <td>
+                       <a href="/establecimiento/editar/1" class="btn btn-warning btn-sm m-1">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tienda El Ahorro</td>
+                    <td>Jr. Lima 567</td>
+                    <td>09:00</td>
+                    <td>20:00</td>
+                    <td>
+                        <a href="/establecimiento/editar/1" class="btn btn-warning btn-sm m-1">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+{% endblock %}

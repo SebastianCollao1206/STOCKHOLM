@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="d-flex container-fluid mt-4">
+        <div class="d-flex justify-content-center w-100">
+            <h2 class="text-center fw-semibold">
+                Agregar Vendedor
+            </h2>
+        </div>
+        <div class="text-center justify-content-end">
+            <a class="text-decoration-none">
+                <button type="button" class="btn btn-primary text-white btn-volver border-0" onclick="history.back()">
+                    <i class="bi bi-arrow-bar-left mx-3"></i>Volver
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <form action="" method="POST">
+        <div class="row mb-4 mt-5 d-flex justify-content-center align-items-center gap-4">
+
+            <div class="col-md-5">
+                <label for="nombre-vendedor" class="form-label fw-medium">Nombre del vendedor</label>
+                <input type="text" id="nombre-vendedor" name="nombre" class="form-control" placeholder="Ej: Juan Pérez"
+                    required>
+            </div>
+
+            <div class="col-md-5">
+                <label for="valoracion" class="form-label fw-medium">Valoración (1 al 10)</label>
+                <input type="number" id="valoracion" name="valoracion" class="form-control" placeholder="Ej: 8" min="1"
+                    max="10" required>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-5">
+            <button type="submit" class="btn btn-agregar btn-primary border-0 text-white">
+                <i class="bi bi-plus-circle me-2"></i>Agregar Vendedor
+            </button>
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}

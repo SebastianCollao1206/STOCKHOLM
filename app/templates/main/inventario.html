@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-1">
+    <div class="row d-flex container-fluid justify-content-center mb-4">
+        <div class="d-flex justify-content-center">
+            <h2 class="text-center fw-semibold">Inventario</h2>
+        </div>
+    </div>
+
+    <div class="card shadow-sm mb-5 mt-lg-0 mt-4">
+        <div class="card-body">
+            <form method="GET" action="#" class="row g-3 g-lg-5 align-items-end d-flex justify-content-center">
+
+                <div class="col-md-4 col-sm-6">
+                    <label class="form-label small fw-bold">Nombre</label>
+                    <input type="text" name="nombre" class="form-control" placeholder="Buscar por nombre">
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <label class="form-label small fw-bold">Fecha de vencimiento</label>
+                    <input type="date" name="fecha" class="form-control">
+                </div>
+
+                <div class="col-md-4 col-sm-12 text-center text-md-start">
+                    <button type="submit" class="btn btn-danger border-0 btn-filtrar text-white w-100">
+                        <i class="bi bi-search me-2"></i>Filtrar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="table-responsive mt-5">
+        <table class="table table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha de vencimiento</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Leche Gloria</td>
+                    <td>2025-08-15</td>
+                    <td>24</td>
+                </tr>
+                <tr>
+                    <td>Arroz Extra Costeño</td>
+                    <td>2026-01-10</td>
+                    <td>15</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+{% endblock %}

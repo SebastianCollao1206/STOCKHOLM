@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="row d-flex container-fluid justify-content-center gy-3">
+        <div class="col-md-7 d-flex justify-content-center">
+            <h2 class="text-center fw-semibold">Registros</h2>
+        </div>
+        <div class="col-md-5 d-flex text-center  justify-content-center">
+            <a class="text-decoration-none" href="/registro/agregar">
+                <button type="button" class="btn text-white btn-primary btn-usuario border-0">Agregar registro<i
+                        class="bi bi-plus-lg mx-3"></i></button>
+            </a>
+        </div>
+    </div>
+
+    <div class="table-responsive mt-5">
+        <table class="table table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Establecimiento</th>
+                    <th>Total</th>
+                    <th>Información</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2025-07-09</td>
+                    <td>08:00</td>
+                    <td>Supermercado MiVeci</td>
+                    <td>S/ 240.00</td>
+                    <td>
+                        <a href="/detalle/registro/1" class="btn btn-info btn-sm rounded text-white">
+                            Ver <i class="bi bi-eye mx-2"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2025-07-09</td>
+                    <td>09:30</td>
+                    <td>Tienda El Ahorro</td>
+                    <td>S/ 190.50</td>
+                    <td>
+                        <a href="/detalle/registro/1" class="btn btn-info btn-sm rounded text-white">
+                            Ver <i class="bi bi-eye mx-2"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+{% endblock %}
