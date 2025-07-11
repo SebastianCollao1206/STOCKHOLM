@@ -65,25 +65,26 @@ class UsuarioDAO:
             
         except Exception as e:
             raise Exception(f"Error al obtener hash del usuario: {str(e)}")
-        
+   
     @staticmethod
     def obtener_id_por_correo(correo):
         try:
-            query = text("SELECT idUsuario FROM Usuario WHERE correo = :correo")
-            result = db.session.execute(query, {'correo': correo})
+            query = text("CALL usp_obtenerIdUsuarioPorCorreo(:p_correo)")
+            result = db.session.execute(query, {'p_correo': correo})
             row = result.fetchone()
             return row[0] if row else None
             
         except Exception as e:
-            raise Exception(f"Error al obtener ID por correo: {str(e)}")    
-        
+            raise Exception(f"Error al obtener ID por correo: {str(e)}")
+
     @staticmethod
     def verificar_correo_existe(correo):
         try:
-            query = text("SELECT COUNT(*) FROM Usuario WHERE correo = :correo")
-            result = db.session.execute(query, {'correo': correo})
+            query = text("CALL usp_contarUsuarioPorCorreo(:p_correo)")
+            result = db.session.execute(query, {'p_correo': correo})
             count = result.fetchone()[0]
             return count > 0
             
         except Exception as e:
-            raise Exception(f"Error al verificar correo: {str(e)}")    
+            raise Exception(f"Error al verificar correo: {str(e)}")
+ 

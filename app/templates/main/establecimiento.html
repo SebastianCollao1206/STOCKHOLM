@@ -28,28 +28,26 @@
                 </tr>
             </thead>
             <tbody>
+                {% if establecimientos %}
+                {% for establecimiento in establecimientos %}
                 <tr>
-                    <td>Supermercado MiVeci</td>
-                    <td>Av. Perú 1234</td>
-                    <td>08:00</td>
-                    <td>21:00</td>
+                    <td>{{ establecimiento.establecimiento }}</td>
+                    <td>{{ establecimiento.direccion }}</td>
+                    <td>{{ establecimiento.horaApertura }}</td>
+                    <td>{{ establecimiento.horaCierre }}</td>
                     <td>
-                       <a href="/establecimiento/editar/1" class="btn btn-warning btn-sm m-1">
+                        <a href="{{ url_for('main.editar_establecimiento', id=establecimiento.idEstablecimiento) }}"
+                            class="btn btn-warning btn-sm m-1">
                             <i class="bi bi-pencil"></i>
                         </a>
                     </td>
                 </tr>
+                {% endfor %}
+                {% else %}
                 <tr>
-                    <td>Tienda El Ahorro</td>
-                    <td>Jr. Lima 567</td>
-                    <td>09:00</td>
-                    <td>20:00</td>
-                    <td>
-                        <a href="/establecimiento/editar/1" class="btn btn-warning btn-sm m-1">
-                            <i class="bi bi-pencil"></i>
-                        </a>
-                    </td>
+                    <td colspan="5" class="text-muted">No hay establecimientos registrados</td>
                 </tr>
+                {% endif %}
             </tbody>
         </table>
     </div>

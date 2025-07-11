@@ -1,0 +1,164 @@
+2025-07-11 09:42:00,808 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 09:42:03,914 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 09:42:28,551 - notifications - ERROR - Alerta de error: ¡Error! - Correo o contraseña incorrectos
+2025-07-11 09:42:28,552 - notifications - INFO - Alerta establecida: {'message': 'Correo o contraseña incorrectos', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 09:42:28,576 - notifications - INFO - Alerta obtenida: {'message': 'Correo o contraseña incorrectos', 'title': '¡Error!', 'type': 'error'}
+2025-07-11 09:42:45,977 - notifications - INFO - Alerta de éxito: ¡Éxito! - Usuario registrado exitosamente. Ya puedes iniciar sesión
+2025-07-11 09:42:45,978 - notifications - INFO - Alerta establecida: {'message': 'Usuario registrado exitosamente. Ya puedes iniciar sesión', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-11 09:42:46,000 - notifications - INFO - Alerta obtenida: {'message': 'Usuario registrado exitosamente. Ya puedes iniciar sesión', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-11 09:42:54,403 - notifications - INFO - Alerta de éxito: Hola Sebastian Collao - ¡Bienvenido de vuelta!
+2025-07-11 09:42:54,405 - notifications - INFO - Alerta establecida: {'message': '¡Bienvenido de vuelta!', 'type': 'success', 'title': 'Hola Sebastian Collao'}
+2025-07-11 09:42:54,439 - notifications - INFO - Alerta obtenida: {'message': '¡Bienvenido de vuelta!', 'title': 'Hola Sebastian Collao', 'type': 'success'}
+2025-07-11 09:43:02,326 - notifications - INFO - Alerta de éxito: ¡Éxito! - Has cerrado sesión exitosamente
+2025-07-11 09:43:02,327 - notifications - INFO - Alerta establecida: {'message': 'Has cerrado sesión exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-11 09:43:02,346 - notifications - INFO - Alerta obtenida: {'message': 'Has cerrado sesión exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-11 09:43:13,324 - notifications - ERROR - Alerta de error: ¡Error! - La contraseña debe tener al menos 6 caracteres
+2025-07-11 09:43:13,325 - notifications - INFO - Alerta establecida: {'message': 'La contraseña debe tener al menos 6 caracteres', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 09:43:13,343 - notifications - INFO - Alerta obtenida: {'message': 'La contraseña debe tener al menos 6 caracteres', 'title': '¡Error!', 'type': 'error'}
+2025-07-11 09:43:25,188 - notifications - ERROR - Alerta de error: ¡Error! - El correo electrónico ya está registrado
+2025-07-11 09:43:25,189 - notifications - INFO - Alerta establecida: {'message': 'El correo electrónico ya está registrado', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 09:43:25,215 - notifications - INFO - Alerta obtenida: {'message': 'El correo electrónico ya está registrado', 'title': '¡Error!', 'type': 'error'}
+2025-07-11 09:44:03,686 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 09:52:49,473 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 09:56:47,728 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 09:58:22,902 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 10:00:17,418 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 10:02:06,839 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 10:09:35,394 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 10:09:45,216 - notifications - INFO - Alerta de éxito: Hola Sebastian Collao - ¡Bienvenido de vuelta!
+2025-07-11 10:09:45,217 - notifications - INFO - Alerta establecida: {'message': '¡Bienvenido de vuelta!', 'type': 'success', 'title': 'Hola Sebastian Collao'}
+2025-07-11 10:09:45,256 - notifications - INFO - Alerta obtenida: {'message': '¡Bienvenido de vuelta!', 'title': 'Hola Sebastian Collao', 'type': 'success'}
+2025-07-11 10:12:07,243 - notifications - INFO - Alerta de éxito: ¡Éxito! - Establecimiento creado exitosamente
+2025-07-11 10:12:07,244 - notifications - INFO - Alerta establecida: {'message': 'Establecimiento creado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-11 10:12:07,263 - notifications - INFO - Alerta obtenida: {'message': 'Establecimiento creado exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-11 10:56:24,020 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 10:56:41,198 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 10:57:34,361 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 10:58:02,657 - notifications - INFO - Alerta de éxito: ¡Éxito! - Establecimiento creado exitosamente
+2025-07-11 10:58:02,659 - notifications - INFO - Alerta establecida: {'message': 'Establecimiento creado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-11 10:58:02,690 - notifications - INFO - Alerta obtenida: {'message': 'Establecimiento creado exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-11 11:28:28,285 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 11:30:00,077 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 11:30:01,153 - notifications - ERROR - Alerta de error: ¡Error! - Establecimiento no encontrado o no tienes permisos para editarlo
+2025-07-11 11:30:01,154 - notifications - INFO - Alerta establecida: {'message': 'Establecimiento no encontrado o no tienes permisos para editarlo', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 11:30:01,196 - notifications - INFO - Alerta obtenida: {'message': 'Establecimiento no encontrado o no tienes permisos para editarlo', 'title': '¡Error!', 'type': 'error'}
+2025-07-11 11:30:09,166 - notifications - ERROR - Alerta de error: ¡Error! - Establecimiento no encontrado o no tienes permisos para editarlo
+2025-07-11 11:30:09,167 - notifications - INFO - Alerta establecida: {'message': 'Establecimiento no encontrado o no tienes permisos para editarlo', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 11:30:09,184 - notifications - INFO - Alerta obtenida: {'message': 'Establecimiento no encontrado o no tienes permisos para editarlo', 'title': '¡Error!', 'type': 'error'}
+2025-07-11 11:30:42,841 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 11:31:17,195 - notifications - ERROR - Alerta de error: ¡Error! - Error interno del servidor
+2025-07-11 11:31:17,195 - notifications - INFO - Alerta establecida: {'message': 'Error interno del servidor', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 11:31:17,211 - notifications - INFO - Alerta obtenida: {'message': 'Error interno del servidor', 'title': '¡Error!', 'type': 'error'}
+2025-07-11 11:31:21,630 - notifications - ERROR - Alerta de error: ¡Error! - Error interno del servidor
+2025-07-11 11:31:21,630 - notifications - INFO - Alerta establecida: {'message': 'Error interno del servidor', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 11:31:21,651 - notifications - INFO - Alerta obtenida: {'message': 'Error interno del servidor', 'title': '¡Error!', 'type': 'error'}
+2025-07-11 11:35:17,590 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 11:40:47,772 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 11:40:51,270 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 11:41:15,997 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 11:43:54,433 - notifications - ERROR - Alerta de error: ¡Error! - Las horas deben tener un formato válido (HH:MM)
+2025-07-11 11:43:54,437 - notifications - INFO - Alerta establecida: {'message': 'Las horas deben tener un formato válido (HH:MM)', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 11:43:54,440 - notifications - INFO - Alerta obtenida: {'message': 'Las horas deben tener un formato válido (HH:MM)', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 11:44:06,030 - notifications - ERROR - Alerta de error: ¡Error! - Las horas deben tener un formato válido (HH:MM)
+2025-07-11 11:44:06,030 - notifications - INFO - Alerta establecida: {'message': 'Las horas deben tener un formato válido (HH:MM)', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 11:44:06,033 - notifications - INFO - Alerta obtenida: {'message': 'Las horas deben tener un formato válido (HH:MM)', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 11:45:18,117 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 11:47:03,984 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 11:48:24,893 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 11:53:36,131 - notifications - INFO - Alerta de éxito: ¡Éxito! - Establecimiento creado exitosamente
+2025-07-11 11:53:36,134 - notifications - INFO - Alerta establecida: {'message': 'Establecimiento creado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-11 11:53:36,181 - notifications - INFO - Alerta obtenida: {'message': 'Establecimiento creado exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-11 11:55:47,709 - notifications - ERROR - Alerta de error: ¡Error! - Ya tienes un establecimiento con ese nombre
+2025-07-11 11:55:47,710 - notifications - INFO - Alerta establecida: {'message': 'Ya tienes un establecimiento con ese nombre', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 11:55:47,711 - notifications - INFO - Alerta obtenida: {'message': 'Ya tienes un establecimiento con ese nombre', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 12:02:51,981 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 12:20:31,928 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 12:26:06,291 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 12:45:50,450 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 12:46:04,641 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 12:46:31,713 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 12:47:02,662 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 12:51:56,974 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 12:53:41,784 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 12:54:33,769 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 12:55:13,581 - notifications - ERROR - Alerta de error: ¡Error! - Error al crear establecimiento: A transaction is already begun on this Session.
+2025-07-11 12:55:13,582 - notifications - INFO - Alerta establecida: {'message': 'Error al crear establecimiento: A transaction is already begun on this Session.', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 12:55:13,583 - notifications - INFO - Alerta obtenida: {'message': 'Error al crear establecimiento: A transaction is already begun on this Session.', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 12:58:11,935 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 12:58:36,913 - notifications - INFO - Alerta de éxito: ¡Éxito! - Establecimiento creado exitosamente
+2025-07-11 12:58:36,914 - notifications - INFO - Alerta establecida: {'message': 'Establecimiento creado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-11 12:58:36,956 - notifications - INFO - Alerta obtenida: {'message': 'Establecimiento creado exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-11 12:59:39,731 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 13:00:48,047 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 13:01:11,561 - notifications - INFO - Alerta de éxito: ¡Éxito! - Establecimiento creado exitosamente
+2025-07-11 13:01:11,562 - notifications - INFO - Alerta establecida: {'message': 'Establecimiento creado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-11 13:01:11,591 - notifications - INFO - Alerta obtenida: {'message': 'Establecimiento creado exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-11 13:01:27,788 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 13:01:34,288 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 13:01:43,008 - notifications - INFO - Alerta de éxito: ¡Éxito! - Establecimiento actualizado exitosamente
+2025-07-11 13:01:43,009 - notifications - INFO - Alerta establecida: {'message': 'Establecimiento actualizado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-11 13:01:43,046 - notifications - INFO - Alerta obtenida: {'message': 'Establecimiento actualizado exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-11 13:01:55,320 - notifications - INFO - Alerta de éxito: ¡Éxito! - Establecimiento actualizado exitosamente
+2025-07-11 13:01:55,321 - notifications - INFO - Alerta establecida: {'message': 'Establecimiento actualizado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-11 13:01:55,346 - notifications - INFO - Alerta obtenida: {'message': 'Establecimiento actualizado exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-11 13:02:05,019 - notifications - INFO - Alerta de éxito: ¡Éxito! - Establecimiento actualizado exitosamente
+2025-07-11 13:02:05,020 - notifications - INFO - Alerta establecida: {'message': 'Establecimiento actualizado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-11 13:02:05,048 - notifications - INFO - Alerta obtenida: {'message': 'Establecimiento actualizado exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-11 13:02:23,170 - notifications - ERROR - Alerta de error: ¡Error! - Ya tienes un establecimiento con ese nombre
+2025-07-11 13:02:23,171 - notifications - INFO - Alerta establecida: {'message': 'Ya tienes un establecimiento con ese nombre', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 13:02:23,172 - notifications - INFO - Alerta obtenida: {'message': 'Ya tienes un establecimiento con ese nombre', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 13:33:22,524 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 13:34:30,419 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 13:35:22,272 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 13:35:24,319 - notifications - ERROR - Alerta de error: ¡Error! - Establecimiento no encontrado o no tienes permisos para editarlo
+2025-07-11 13:35:24,320 - notifications - INFO - Alerta establecida: {'message': 'Establecimiento no encontrado o no tienes permisos para editarlo', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 13:35:24,343 - notifications - INFO - Alerta obtenida: {'message': 'Establecimiento no encontrado o no tienes permisos para editarlo', 'title': '¡Error!', 'type': 'error'}
+2025-07-11 13:35:29,406 - notifications - ERROR - Alerta de error: ¡Error! - Establecimiento no encontrado o no tienes permisos para editarlo
+2025-07-11 13:35:29,406 - notifications - INFO - Alerta establecida: {'message': 'Establecimiento no encontrado o no tienes permisos para editarlo', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 13:35:29,423 - notifications - INFO - Alerta obtenida: {'message': 'Establecimiento no encontrado o no tienes permisos para editarlo', 'title': '¡Error!', 'type': 'error'}
+2025-07-11 13:35:36,608 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 13:35:41,937 - notifications - INFO - Alerta de éxito: ¡Éxito! - Establecimiento actualizado exitosamente
+2025-07-11 13:35:41,938 - notifications - INFO - Alerta establecida: {'message': 'Establecimiento actualizado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-11 13:35:41,959 - notifications - INFO - Alerta obtenida: {'message': 'Establecimiento actualizado exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-11 13:35:47,788 - notifications - INFO - Alerta de éxito: ¡Éxito! - Establecimiento actualizado exitosamente
+2025-07-11 13:35:47,788 - notifications - INFO - Alerta establecida: {'message': 'Establecimiento actualizado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-11 13:35:47,805 - notifications - INFO - Alerta obtenida: {'message': 'Establecimiento actualizado exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-11 13:37:52,397 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 13:38:12,151 - notifications - ERROR - Alerta de error: ¡Error! - Ya tienes un establecimiento con ese nombre
+2025-07-11 13:38:12,152 - notifications - INFO - Alerta establecida: {'message': 'Ya tienes un establecimiento con ese nombre', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 13:38:12,152 - notifications - INFO - Alerta obtenida: {'message': 'Ya tienes un establecimiento con ese nombre', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 13:39:03,851 - notifications - INFO - Alerta de éxito: ¡Éxito! - Has cerrado sesión exitosamente
+2025-07-11 13:39:03,852 - notifications - INFO - Alerta establecida: {'message': 'Has cerrado sesión exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-11 13:39:03,890 - notifications - INFO - Alerta obtenida: {'message': 'Has cerrado sesión exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-11 13:39:17,963 - notifications - INFO - Alerta de éxito: ¡Éxito! - Usuario registrado exitosamente. Ya puedes iniciar sesión
+2025-07-11 13:39:17,963 - notifications - INFO - Alerta establecida: {'message': 'Usuario registrado exitosamente. Ya puedes iniciar sesión', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-11 13:39:17,974 - notifications - INFO - Alerta obtenida: {'message': 'Usuario registrado exitosamente. Ya puedes iniciar sesión', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-11 13:39:25,072 - notifications - INFO - Alerta de éxito: Hola Jaime Lopez - ¡Bienvenido de vuelta!
+2025-07-11 13:39:25,073 - notifications - INFO - Alerta establecida: {'message': '¡Bienvenido de vuelta!', 'type': 'success', 'title': 'Hola Jaime Lopez'}
+2025-07-11 13:39:25,090 - notifications - INFO - Alerta obtenida: {'message': '¡Bienvenido de vuelta!', 'title': 'Hola Jaime Lopez', 'type': 'success'}
+2025-07-11 13:39:47,859 - notifications - ERROR - Alerta de error: ¡Error! - Ya tienes un establecimiento con ese nombre
+2025-07-11 13:39:47,860 - notifications - INFO - Alerta establecida: {'message': 'Ya tienes un establecimiento con ese nombre', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 13:39:47,860 - notifications - INFO - Alerta obtenida: {'message': 'Ya tienes un establecimiento con ese nombre', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 13:40:20,382 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 13:40:37,184 - notifications - INFO - Alerta de éxito: ¡Éxito! - Establecimiento creado exitosamente
+2025-07-11 13:40:37,185 - notifications - INFO - Alerta establecida: {'message': 'Establecimiento creado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-11 13:40:37,205 - notifications - INFO - Alerta obtenida: {'message': 'Establecimiento creado exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-11 13:40:44,405 - notifications - INFO - Alerta de éxito: ¡Éxito! - Has cerrado sesión exitosamente
+2025-07-11 13:40:44,405 - notifications - INFO - Alerta establecida: {'message': 'Has cerrado sesión exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-11 13:40:44,426 - notifications - INFO - Alerta obtenida: {'message': 'Has cerrado sesión exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-11 13:40:50,418 - notifications - INFO - Alerta de éxito: Hola Sebastian Collao - ¡Bienvenido de vuelta!
+2025-07-11 13:40:50,419 - notifications - INFO - Alerta establecida: {'message': '¡Bienvenido de vuelta!', 'type': 'success', 'title': 'Hola Sebastian Collao'}
+2025-07-11 13:40:50,433 - notifications - INFO - Alerta obtenida: {'message': '¡Bienvenido de vuelta!', 'title': 'Hola Sebastian Collao', 'type': 'success'}
+2025-07-11 13:41:30,624 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 13:41:37,166 - notifications - INFO - Alerta de éxito: ¡Éxito! - Has cerrado sesión exitosamente
+2025-07-11 13:41:37,166 - notifications - INFO - Alerta establecida: {'message': 'Has cerrado sesión exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-11 13:41:37,183 - notifications - INFO - Alerta obtenida: {'message': 'Has cerrado sesión exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-11 13:41:44,983 - notifications - INFO - Alerta de éxito: Hola Jaime Lopez - ¡Bienvenido de vuelta!
+2025-07-11 13:41:44,984 - notifications - INFO - Alerta establecida: {'message': '¡Bienvenido de vuelta!', 'type': 'success', 'title': 'Hola Jaime Lopez'}
+2025-07-11 13:41:44,998 - notifications - INFO - Alerta obtenida: {'message': '¡Bienvenido de vuelta!', 'title': 'Hola Jaime Lopez', 'type': 'success'}
+2025-07-11 13:41:50,269 - notifications - INFO - Alerta de éxito: ¡Éxito! - Has cerrado sesión exitosamente
+2025-07-11 13:41:50,269 - notifications - INFO - Alerta establecida: {'message': 'Has cerrado sesión exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-11 13:41:50,280 - notifications - INFO - Alerta obtenida: {'message': 'Has cerrado sesión exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-11 13:41:55,783 - notifications - INFO - Alerta de éxito: Hola Sebastian Collao - ¡Bienvenido de vuelta!
+2025-07-11 13:41:55,783 - notifications - INFO - Alerta establecida: {'message': '¡Bienvenido de vuelta!', 'type': 'success', 'title': 'Hola Sebastian Collao'}
+2025-07-11 13:41:55,795 - notifications - INFO - Alerta obtenida: {'message': '¡Bienvenido de vuelta!', 'title': 'Hola Sebastian Collao', 'type': 'success'}

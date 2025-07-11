@@ -28,7 +28,8 @@
             <div class="col-md-5">
                 <label for="nombre-establecimiento" class="form-label fw-medium">Nombre del establecimiento</label>
                 <input type="text" id="nombre-establecimiento" name="nombre" class="form-control"
-                    placeholder="Ej: Supermercado MiVeci" value="{% if est %}{{ est.nombre }}{% endif %}" required>
+                    placeholder="Ej: Supermercado MiVeci" value="{% if est %}{{ est.establecimiento }}{% endif %}"
+                    required>
             </div>
             <div class="col-md-5">
                 <label for="direccion-establecimiento" class="form-label fw-medium">Dirección</label>
@@ -41,12 +42,12 @@
             <div class="col-md-5">
                 <label for="hora-apertura" class="form-label fw-medium">Hora de apertura</label>
                 <input type="time" id="hora-apertura" name="hora_apertura" class="form-control"
-                    value="{% if est %}{{ est.hora_apertura }}{% endif %}" required>
+                    value="{% if est %}{{ est.horaApertura }}{% endif %}" required>
             </div>
             <div class="col-md-5">
                 <label for="hora-cierre" class="form-label fw-medium">Hora de cierre</label>
                 <input type="time" id="hora-cierre" name="hora_cierre" class="form-control"
-                    value="{% if est %}{{ est.hora_cierre }}{% endif %}" required>
+                    value="{% if est %}{{ est.horaCierre }}{% endif %}" required>
             </div>
         </div>
 
