@@ -82,6 +82,12 @@
                 <input type="date" id="fecha" name="fecha" class="form-control" required>
             </div>
 
+            <div class="col-md-2">
+                <label for="hora" class="form-label fw-medium">Hora</label>
+                <input type="time" id="hora" name="hora" class="form-control" required>
+            </div>
+
+
             <div class="col-md-3">
                 <label for="vendedor" class="form-label fw-medium">Vendedor</label>
                 <select id="vendedor" name="vendedor" class="form-select">
@@ -112,19 +118,20 @@
                     </small>
                 </div>
             </div>
+        </div>
 
-            <div class="col-md-2 d-flex align-items-center justify-content-center">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-3 d-flex justify-content-center mt-5">
+                <button type="submit" class="btn btn-agregar btn-primary border-0 text-white">
+                    <i class="bi bi-plus-circle me-2"></i>Guardar
+                </button>
+            </div>
+            <div class="col-md-3 d-flex justify-content-center mt-5">
                 <button type="button" class="btn btn-danger btn-agregar border-0 text-white"
                     onclick="limpiarRegistro()">
                     <i class="bi bi-trash me-2"></i>Limpiar
                 </button>
             </div>
-        </div>
-
-        <div class="d-flex justify-content-center mt-5">
-            <button type="submit" class="btn btn-agregar btn-primary border-0 text-white">
-                <i class="bi bi-plus-circle me-2"></i>Guardar
-            </button>
         </div>
     </form>
 </div>
@@ -132,7 +139,6 @@
 <script>
     function limpiarRegistro() {
         if (confirm('¿Estás seguro de limpiar todo el registro?')) {
-            // Crear un formulario temporal para la acción de limpiar
             const form = document.createElement('form');
             form.method = 'POST';
             form.action = "{{ url_for('main.detalle_registro_limpiar') }}";

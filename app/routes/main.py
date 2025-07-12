@@ -188,7 +188,23 @@ def productos():
 @main_bp.route('/registros')
 @login_required
 def registros():
-    return render_template('main/registros.html')
+    try:
+        id_usuario = session.get('user_id')
+        
+        if not id_usuario:
+            return render_template('main/registros.html', compras=[], error="Usuario no autenticado")
+        
+        resultado = ServicioCompra.listar_compras_usuario(id_usuario)
+        
+        if resultado['success']:
+            compras = resultado['compras']
+        else:
+            compras = []
+            
+        return render_template('main/registros.html', compras=compras)
+        
+    except Exception as e:
+        return render_template('main/registros.html', compras=[], error=f"Error al cargar registros: {str(e)}")
 
 @main_bp.route('/detalle/registro/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -256,6 +272,7 @@ def guardar_compra():
             return redirect(url_for('auth.login'))
         
         fecha = request.form.get('fecha')
+        hora = request.form.get('hora')  # Nuevo campo
         vendedor_id = request.form.get('vendedor')
         establecimiento_id = request.form.get('establecimiento')
         
@@ -267,8 +284,8 @@ def guardar_compra():
             Notificacion.error('Debes seleccionar un vendedor o establecimiento')
             return redirect(url_for('main.registro_agregar'))
         
-        if not fecha:
-            Notificacion.error('La fecha es obligatoria')
+        if not fecha or not hora:  
+            Notificacion.error('La fecha y hora son obligatorias')
             return redirect(url_for('main.registro_agregar'))
         
         result_registro = ServicioRegistroTemporal.listar_productos_del_registro()
@@ -279,11 +296,13 @@ def guardar_compra():
         vendedor_id = int(vendedor_id) if vendedor_id else None
         establecimiento_id = int(establecimiento_id) if establecimiento_id else None
         
+        fecha_hora_str = f"{fecha} {hora}"
+        
         result = ServicioCompra.guardar_compra(
             id_usuario=user_id,
             vendedor_id=vendedor_id,
             establecimiento_id=establecimiento_id,
-            fecha_compra=fecha,
+            fecha_compra=fecha_hora_str, 
             productos_registro=result_registro['productos']
         )
         
@@ -298,7 +317,7 @@ def guardar_compra():
     except Exception as e:
         print(f"Error en guardar_compra: {str(e)}")
         Notificacion.error('Error interno del servidor')
-        return redirect(url_for('main.registro_agregar'))        
+        return redirect(url_for('main.registro_agregar'))       
     
 #DETALLE    
 @main_bp.route('/detalle/producto/agregar', methods=['GET', 'POST'])

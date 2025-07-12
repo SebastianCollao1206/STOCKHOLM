@@ -26,11 +26,11 @@ class ServicioCompra:
                 }
             
             try:
-                fecha_compra_obj = datetime.strptime(fecha_compra, '%Y-%m-%d')
+                fecha_compra_obj = datetime.strptime(fecha_compra, '%Y-%m-%d %H:%M')
             except ValueError:
                 return {
                     'success': False,
-                    'message': 'Formato de fecha inválido'
+                    'message': 'Formato de fecha y hora inválido'
                 }
             
             id_usuario_establecimiento = None
@@ -52,7 +52,7 @@ class ServicioCompra:
                 id_usuario_producto = CompraDAO.crear_usuario_producto(
                     id_usuario=id_usuario,
                     id_producto=producto['producto_id'],
-                    stock=None
+                    cantidad_a_agregar=producto['cantidad']  
                 )
                 productos_usuario_producto.append({
                     'id_usuario_producto': id_usuario_producto,
@@ -92,6 +92,7 @@ class ServicioCompra:
                 'success': False,
                 'message': f'Error al guardar la compra: {str(e)}'
             }
+    
     
     @staticmethod
     def listar_compras_usuario(id_usuario):

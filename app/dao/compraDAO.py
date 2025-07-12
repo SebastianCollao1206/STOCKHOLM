@@ -3,18 +3,46 @@ from sqlalchemy import text
 
 class CompraDAO:
     @staticmethod
-    def crear_usuario_producto(id_usuario, id_producto, stock=None):
+    def crear_usuario_producto(id_usuario, id_producto, cantidad_a_agregar):
         try:
-            query = text("CALL usp_nuevoUsuarioProducto(:p_idUsuario, :p_idProducto, :p_stock)")
-            db.session.execute(query, {
+            
+            query_buscar = text("""
+                SELECT idUsuarioProducto, stock FROM UsuarioProducto 
+                WHERE idUsuario = :p_idUsuario AND idProducto = :p_idProducto
+            """)
+            result = db.session.execute(query_buscar, {
                 'p_idUsuario': id_usuario,
-                'p_idProducto': id_producto,
-                'p_stock': stock
+                'p_idProducto': id_producto
             })
-            id_usuario_producto = db.session.execute(text("SELECT LAST_INSERT_ID()")).fetchone()[0]
-            return id_usuario_producto
+            row = result.fetchone()
+            
+            if row:
+                id_usuario_producto = row[0]
+                stock_actual = row[1] or 0 
+                stock_actual = float(stock_actual)
+                nuevo_stock = stock_actual + cantidad_a_agregar
+                
+                query_actualizar = text("CALL usp_actualizarUsuarioProducto(:p_idUsuarioProducto, :p_idUsuario, :p_idProducto, :p_stock)")
+                db.session.execute(query_actualizar, {
+                    'p_idUsuarioProducto': id_usuario_producto,
+                    'p_idUsuario': None,  
+                    'p_idProducto': None, 
+                    'p_stock': nuevo_stock
+                })
+                
+                return id_usuario_producto
+            else:
+                query_crear = text("CALL usp_nuevoUsuarioProducto(:p_idUsuario, :p_idProducto, :p_stock)")
+                db.session.execute(query_crear, {
+                    'p_idUsuario': id_usuario,
+                    'p_idProducto': id_producto,
+                    'p_stock': cantidad_a_agregar
+                })
+                id_usuario_producto = db.session.execute(text("SELECT LAST_INSERT_ID()")).fetchone()[0]
+                return id_usuario_producto
+                
         except Exception as e:
-            raise Exception(f"Error al crear usuario producto: {str(e)}")
+            raise Exception(f"Error al crear/actualizar usuario producto: {str(e)}")
     
     @staticmethod
     def crear_compra(id_usuario_establecimiento, fecha_compra, total):
@@ -86,7 +114,7 @@ class CompraDAO:
     @staticmethod
     def listar_compras_de_usuario(id_usuario):
         try:
-            query = text("CALL listarComprasDeUsuario(:p_idUsuario)")
+            query = text("CALL usp_listarComprasDeUsuario(:p_idUsuario)")
             result = db.session.execute(query, {'p_idUsuario': id_usuario})
             
             compras = []

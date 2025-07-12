@@ -29,30 +29,26 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>2025-07-09</td>
-                    <td>08:00</td>
-                    <td>Supermercado MiVeci</td>
-                    <td>Juan Pérez</td>
-                    <td>S/ 240.00</td>
-                    <td>
-                        <a href="/detalle/registro/1" class="btn btn-info btn-sm rounded text-white">
-                            Ver <i class="bi bi-eye mx-2"></i>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2025-07-09</td>
-                    <td>09:30</td>
-                    <td>Tienda El Ahorro</td>
-                    <td>---</td>
-                    <td>S/ 190.50</td>
-                    <td>
-                        <a href="/detalle/registro/1" class="btn btn-info btn-sm rounded text-white">
-                            Ver <i class="bi bi-eye mx-2"></i>
-                        </a>
-                    </td>
-                </tr>
+                {% if compras %}
+                    {% for compra in compras %}
+                    <tr>
+                        <td>{{ compra.fechaCompra.strftime('%Y-%m-%d') }}</td>
+                        <td>{{ compra.fechaCompra.strftime('%H:%M') }}</td>
+                        <td>{{ compra.establecimiento if compra.establecimiento else '---' }}</td>
+                        <td>{{ compra.vendedor if compra.vendedor else '---' }}</td>
+                        <td>S/ {{ "%.2f"|format(compra.total) }}</td>
+                        <td>
+                            <a href="/detalle/registro/{{ compra.idCompra }}" class="btn btn-info btn-sm rounded text-white">
+                                Ver <i class="bi bi-eye mx-2"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center text-muted">No hay registros de compras</td>
+                    </tr>
+                {% endif %}
             </tbody>
         </table>
     </div>

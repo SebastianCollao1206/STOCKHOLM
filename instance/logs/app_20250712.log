@@ -96,3 +96,58 @@
 2025-07-12 10:13:23,361 - notifications - INFO - Alerta de éxito: Hola Sebastian - ¡Bienvenido de vuelta!
 2025-07-12 10:13:23,362 - notifications - INFO - Alerta establecida: {'message': '¡Bienvenido de vuelta!', 'type': 'success', 'title': 'Hola Sebastian'}
 2025-07-12 10:13:23,398 - notifications - INFO - Alerta obtenida: {'message': '¡Bienvenido de vuelta!', 'title': 'Hola Sebastian', 'type': 'success'}
+2025-07-12 10:21:47,536 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 10:27:10,219 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 10:27:33,538 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 10:28:07,671 - notifications - INFO - Alerta de éxito: ¡Éxito! - Producto agregado al registro exitosamente
+2025-07-12 10:28:07,672 - notifications - INFO - Alerta establecida: {'message': 'Producto agregado al registro exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 10:28:07,710 - notifications - INFO - Alerta obtenida: {'message': 'Producto agregado al registro exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-12 10:28:28,649 - notifications - INFO - Alerta de éxito: ¡Éxito! - Compra guardada exitosamente
+2025-07-12 10:28:28,650 - notifications - INFO - Alerta establecida: {'message': 'Compra guardada exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 10:28:28,668 - notifications - INFO - Alerta obtenida: {'message': 'Compra guardada exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-12 10:30:41,178 - notifications - INFO - Alerta de éxito: ¡Éxito! - Producto agregado al registro exitosamente
+2025-07-12 10:30:41,179 - notifications - INFO - Alerta establecida: {'message': 'Producto agregado al registro exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 10:30:41,212 - notifications - INFO - Alerta obtenida: {'message': 'Producto agregado al registro exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-12 10:30:50,242 - notifications - ERROR - Alerta de error: ¡Error! - Error al guardar la compra: Error al crear/actualizar usuario producto: unsupported operand type(s) for +: 'decimal.Decimal' and 'float'
+2025-07-12 10:30:50,242 - notifications - INFO - Alerta establecida: {'message': "Error al guardar la compra: Error al crear/actualizar usuario producto: unsupported operand type(s) for +: 'decimal.Decimal' and 'float'", 'type': 'error', 'title': '¡Error!'}
+2025-07-12 10:30:50,277 - notifications - INFO - Alerta obtenida: {'message': "Error al guardar la compra: Error al crear/actualizar usuario producto: unsupported operand type(s) for +: 'decimal.Decimal' and 'float'", 'title': '¡Error!', 'type': 'error'}
+2025-07-12 10:38:51,102 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 10:39:08,825 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 10:43:34,184 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 10:43:58,309 - notifications - INFO - Alerta de éxito: ¡Éxito! - Compra guardada exitosamente
+2025-07-12 10:43:58,310 - notifications - INFO - Alerta establecida: {'message': 'Compra guardada exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 10:43:58,337 - notifications - INFO - Alerta obtenida: {'message': 'Compra guardada exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-12 10:45:26,256 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 10:50:11,820 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 10:52:27,882 - notifications - INFO - Alerta de éxito: ¡Éxito! - Producto agregado al registro exitosamente
+2025-07-12 10:52:27,884 - notifications - INFO - Alerta establecida: {'message': 'Producto agregado al registro exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 10:52:27,923 - notifications - INFO - Alerta obtenida: {'message': 'Producto agregado al registro exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-12 10:52:48,517 - notifications - INFO - Alerta de éxito: ¡Éxito! - Producto agregado al registro exitosamente
+2025-07-12 10:52:48,518 - notifications - INFO - Alerta establecida: {'message': 'Producto agregado al registro exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 10:52:48,550 - notifications - INFO - Alerta obtenida: {'message': 'Producto agregado al registro exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-12 10:53:04,292 - notifications - INFO - Alerta de éxito: ¡Éxito! - Compra guardada exitosamente
+2025-07-12 10:53:04,294 - notifications - INFO - Alerta establecida: {'message': 'Compra guardada exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 10:53:04,321 - notifications - INFO - Alerta obtenida: {'message': 'Compra guardada exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-12 11:03:10,221 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 11:04:31,927 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 11:10:54,538 - notifications - ERROR - Alerta de error: ¡Error! - No hay productos en el registro
+2025-07-12 11:10:54,539 - notifications - INFO - Alerta establecida: {'message': 'No hay productos en el registro', 'type': 'error', 'title': '¡Error!'}
+2025-07-12 11:10:54,579 - notifications - INFO - Alerta obtenida: {'message': 'No hay productos en el registro', 'title': '¡Error!', 'type': 'error'}
+2025-07-12 11:11:43,555 - notifications - INFO - Alerta de éxito: ¡Éxito! - Registro temporal limpiado exitosamente
+2025-07-12 11:11:43,556 - notifications - INFO - Alerta establecida: {'message': 'Registro temporal limpiado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 11:11:43,584 - notifications - INFO - Alerta obtenida: {'message': 'Registro temporal limpiado exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-12 11:15:13,003 - notifications - INFO - Alerta de éxito: ¡Éxito! - Registro temporal limpiado exitosamente
+2025-07-12 11:15:13,005 - notifications - INFO - Alerta establecida: {'message': 'Registro temporal limpiado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 11:15:13,034 - notifications - INFO - Alerta obtenida: {'message': 'Registro temporal limpiado exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-12 11:17:02,769 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 11:18:05,751 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 11:23:40,626 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 11:24:34,128 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 11:24:55,391 - notifications - INFO - Alerta de éxito: ¡Éxito! - Producto agregado al registro exitosamente
+2025-07-12 11:24:55,393 - notifications - INFO - Alerta establecida: {'message': 'Producto agregado al registro exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 11:24:55,429 - notifications - INFO - Alerta obtenida: {'message': 'Producto agregado al registro exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-12 11:25:20,916 - notifications - INFO - Alerta de éxito: ¡Éxito! - Compra guardada exitosamente
+2025-07-12 11:25:20,917 - notifications - INFO - Alerta establecida: {'message': 'Compra guardada exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 11:25:20,951 - notifications - INFO - Alerta obtenida: {'message': 'Compra guardada exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-12 11:42:37,366 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 11:42:59,774 - app - INFO - Sistema de logging configurado correctamente
