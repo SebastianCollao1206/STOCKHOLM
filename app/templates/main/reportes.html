@@ -5,7 +5,16 @@
 <div class="container mt-3">
     <div class="text-center mb-5">
         <h2 class="fw-bold">Reportes</h2>
+        {% if año_actual %}
+            <p class="text-muted">Datos del año {{ año_actual }}</p>
+        {% endif %}
     </div>
+
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
 
     <div class="row">
         <div class="col-md-6 mb-4">
@@ -38,7 +47,7 @@
         <div class="col-md-6 mb-4">
             <div class="card">
                 <div class="card-header text-center">
-                    <h4 class="card-title">3 Vendedores Más Valorados</h4>
+                    <h4 class="card-title">5 Vendedores Más Valorados</h4>
                 </div>
                 <div class="card-body">
                     <div class="chart-container">
@@ -50,11 +59,11 @@
         <div class="col-md-6 mb-4">
             <div class="card">
                 <div class="card-header text-center">
-                    <h4 class="card-title">5 Productos Más Usados</h4>
+                    <h4 class="card-title">5 Marcas Más Compradas</h4>
                 </div>
                 <div class="card-body">
                     <div class="chart-container">
-                        <canvas id="mostUsedProductsChart"></canvas>
+                        <canvas id="mostUsedBrandsChart"></canvas>
                     </div>
                 </div>
             </div>
@@ -65,7 +74,7 @@
         <div class="col-md-12 mb-4">
             <div class="card">
                 <div class="card-header text-center">
-                    <h4 class="card-title">Gastos Mensuales del Año</h4>
+                    <h4 class="card-title">Gastos Mensuales del Año {{ año_actual or 2024 }}</h4>
                 </div>
                 <div class="card-body">
                     <div class="chart-container-meses">
@@ -76,6 +85,10 @@
         </div>
     </div>
 </div>
+
+<script type="application/json" id="reportes-data">
+{{ reportes | tojson | safe }}
+</script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -99,15 +112,20 @@
             'rgba(199, 199, 199, 1)'
         ];
 
+        const reportesData = document.getElementById('reportes-data');
+        const reportes = JSON.parse(reportesData.textContent);
+
+        // Gráfico de Productos Más Comprados
         const mostBoughtCtx = document.getElementById('mostBoughtProductsChart').getContext('2d');
+        const productosComprados = reportes.productos_comprados || [];
         new Chart(mostBoughtCtx, {
             type: 'pie',
             data: {
-                labels: ['Smartphone', 'Laptop', 'Audífonos', 'Tablet', 'Smartwatch'],
+                labels: productosComprados.map(p => p.nombreProducto),
                 datasets: [{
-                    data: [450, 320, 280, 200, 150],
-                    backgroundColor: colors.slice(0, 5),
-                    borderColor: borderColors.slice(0, 5),
+                    data: productosComprados.map(p => p.totalCantidadComprada),
+                    backgroundColor: colors.slice(0, productosComprados.length),
+                    borderColor: borderColors.slice(0, productosComprados.length),
                     borderWidth: 2
                 }]
             },
@@ -124,25 +142,34 @@
                     },
                     title: {
                         display: true,
-                        text: 'Top 5 Productos por Unidades Vendidas',
+                        text: 'Top 5 Productos por Cantidad Comprada',
                         padding: {
                             top: 10,
                             bottom: 20
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                return context.label + ': ' + context.parsed + ' unidades';
+                            }
                         }
                     }
                 }
             }
         });
 
+        // Gráfico de Productos Más Valorados
         const mostRatedCtx = document.getElementById('mostRatedProductsChart').getContext('2d');
+        const productosValorados = reportes.productos_valorados || [];
         new Chart(mostRatedCtx, {
             type: 'pie',
             data: {
-                labels: ['Cámara Pro', 'Laptop Gaming', 'Auriculares Premium', 'Tablet Pro', 'Smartphone Plus'],
+                labels: productosValorados.map(p => p.nombreProducto),
                 datasets: [{
-                    data: [9.5, 9.2, 8.9, 8.7, 8.5],
-                    backgroundColor: colors.slice(1, 6),
-                    borderColor: borderColors.slice(1, 6),
+                    data: productosValorados.map(p => p.valoracion),
+                    backgroundColor: colors.slice(1, productosValorados.length + 1),
+                    borderColor: borderColors.slice(1, productosValorados.length + 1),
                     borderWidth: 2
                 }]
             },
@@ -159,7 +186,7 @@
                     },
                     title: {
                         display: true,
-                        text: 'Top 5 Productos por Valoración (1-10)',
+                        text: 'Top 5 Productos por Valoración',
                         padding: {
                             top: 10,
                             bottom: 20
@@ -176,15 +203,17 @@
             }
         });
 
+        // Gráfico de Vendedores Más Valorados
         const topSellersCtx = document.getElementById('topSellersChart').getContext('2d');
+        const vendedores = reportes.vendedores || [];
         new Chart(topSellersCtx, {
             type: 'doughnut',
             data: {
-                labels: ['Carlos Mendoza', 'Ana García', 'Luis Torres'],
+                labels: vendedores.map(v => v.vendedor),
                 datasets: [{
-                    data: [9.3, 9.1, 8.8],
-                    backgroundColor: colors.slice(2, 5),
-                    borderColor: borderColors.slice(2, 5),
+                    data: vendedores.map(v => v.valoracionProm),
+                    backgroundColor: colors.slice(2, vendedores.length + 2),
+                    borderColor: borderColors.slice(2, vendedores.length + 2),
                     borderWidth: 2
                 }]
             },
@@ -201,7 +230,7 @@
                     },
                     title: {
                         display: true,
-                        text: 'Top 3 Vendedores por Valoración',
+                        text: 'Top 5 Vendedores por Valoración',
                         padding: {
                             top: 10,
                             bottom: 20
@@ -218,15 +247,17 @@
             }
         });
 
-        const mostUsedCtx = document.getElementById('mostUsedProductsChart').getContext('2d');
-        new Chart(mostUsedCtx, {
+        // Gráfico de Marcas Más Compradas
+        const mostUsedBrandsCtx = document.getElementById('mostUsedBrandsChart').getContext('2d');
+        const marcas = reportes.marcas || [];
+        new Chart(mostUsedBrandsCtx, {
             type: 'doughnut',
             data: {
-                labels: ['WhatsApp', 'Instagram', 'YouTube', 'Gmail', 'Maps'],
+                labels: marcas.map(m => m.marca),
                 datasets: [{
-                    data: [85, 72, 68, 65, 58],
-                    backgroundColor: colors.slice(0, 5),
-                    borderColor: borderColors.slice(0, 5),
+                    data: marcas.map(m => m.cantidadComprada),
+                    backgroundColor: colors.slice(0, marcas.length),
+                    borderColor: borderColors.slice(0, marcas.length),
                     borderWidth: 2
                 }]
             },
@@ -243,7 +274,7 @@
                     },
                     title: {
                         display: true,
-                        text: 'Top 5 Productos por Frecuencia de Uso (%)',
+                        text: 'Top 5 Marcas por Cantidad Comprada',
                         padding: {
                             top: 10,
                             bottom: 20
@@ -252,7 +283,7 @@
                     tooltip: {
                         callbacks: {
                             label: function (context) {
-                                return context.label + ': ' + context.parsed + '%';
+                                return context.label + ': ' + context.parsed + ' productos';
                             }
                         }
                     }
@@ -260,16 +291,16 @@
             }
         });
 
+        // Gráfico de Gastos Mensuales
         const monthlyExpensesCtx = document.getElementById('monthlyExpensesChart').getContext('2d');
+        const comprasMensuales = reportes.compras_mensuales || [];
         new Chart(monthlyExpensesCtx, {
             type: 'bar',
             data: {
-                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-                    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                labels: comprasMensuales.map(c => c.nombreMes),
                 datasets: [{
                     label: 'Gastos Mensuales',
-                    data: [12000, 15000, 13500, 16000, 14500, 17000,
-                            16500, 18000, 15750, 19000, 17250, 20000],
+                    data: comprasMensuales.map(c => c.montoTotal),
                     backgroundColor: 'rgba(54, 162, 235, 0.7)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 2,
@@ -314,7 +345,7 @@
                     },
                     title: {
                         display: true,
-                        text: 'Gastos Mensuales del Año 2024',
+                        text: 'Gastos Mensuales del Año {{ año_actual or 2024 }}',
                         font: {
                             size: 16,
                             weight: 'bold'

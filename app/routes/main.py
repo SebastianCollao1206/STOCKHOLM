@@ -8,6 +8,7 @@ from app.service.categoria_service import ServicioCategoria
 from app.service.producto_service import ServicioProducto
 from app.service.registro_temporal_service import ServicioRegistroTemporal
 from app.service.compra_service import ServicioCompra
+from app.service.reporte_servicio import ServicioReporte
 
 main_bp = Blueprint('main', __name__)
 
@@ -15,7 +16,96 @@ main_bp = Blueprint('main', __name__)
 @main_bp.route('/reportes')
 @login_required
 def reportes():
-    return render_template('main/reportes.html')
+    try:
+        user_id = session.get('user_id')
+        if not user_id:
+            Notificacion.error('Error de sesión')
+            return redirect(url_for('auth.login'))
+        año = request.args.get('año', type=int)
+        
+        reportes_data = ServicioReporte.obtener_todos_los_reportes(user_id, año)
+        
+        if reportes_data['success']:
+            return render_template('main/reportes.html', 
+                                 reportes=reportes_data['data'],
+                                 año_actual=reportes_data['data']['año'])
+        else:
+            return render_template('main/reportes.html', 
+                                 reportes={},
+                                 año_actual=2024,
+                                 error=reportes_data['message'])
+        
+    except Exception as e:
+        return render_template('main/reportes.html', 
+                             reportes={},
+                             año_actual=2024,
+                             error='Error interno del servidor')
+
+@main_bp.route('/api/reportes/vendedores')
+@login_required
+def api_vendedores():
+    try:
+        user_id = session.get('user_id')
+        if not user_id:
+            Notificacion.error('Error de sesión')
+            return redirect(url_for('auth.login'))
+        result = ServicioReporte.obtener_vendedores_mejor_valorados(user_id)
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({'success': False, 'message': str(e)})
+
+@main_bp.route('/api/reportes/marcas')
+@login_required
+def api_marcas():
+    try:
+        user_id = session.get('user_id')
+        if not user_id:
+            Notificacion.error('Error de sesión')
+            return redirect(url_for('auth.login'))
+        result = ServicioReporte.obtener_marcas_mas_compradas(user_id)
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({'success': False, 'message': str(e)})
+
+@main_bp.route('/api/reportes/productos-valorados')
+@login_required
+def api_productos_valorados():
+    try:
+        user_id = session.get('user_id')
+        if not user_id:
+            Notificacion.error('Error de sesión')
+            return redirect(url_for('auth.login'))
+        result = ServicioReporte.obtener_productos_mejor_valorados(user_id)
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({'success': False, 'message': str(e)})
+
+@main_bp.route('/api/reportes/productos-comprados')
+@login_required
+def api_productos_comprados():
+    try:
+        user_id = session.get('user_id')
+        if not user_id:
+            Notificacion.error('Error de sesión')
+            return redirect(url_for('auth.login'))
+        result = ServicioReporte.obtener_productos_mas_comprados(user_id)
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({'success': False, 'message': str(e)})
+
+@main_bp.route('/api/reportes/compras-mensuales')
+@login_required
+def api_compras_mensuales():
+    try:
+        user_id = session.get('user_id')
+        if not user_id:
+            Notificacion.error('Error de sesión')
+            return redirect(url_for('auth.login'))
+        año = request.args.get('año', type=int)
+        result = ServicioReporte.obtener_compras_mensuales(user_id, año)
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({'success': False, 'message': str(e)})
 
 #VENDEDOR
 @main_bp.route('/vendedor/agregar', methods=['GET', 'POST'])
@@ -173,16 +263,6 @@ def marca_agregar():
         return render_template('main/agregar_marca.html')
 
 # #INVENTARIO
-# @main_bp.route('/inventario')
-# @login_required
-# def inventario():
-#     return render_template('main/inventario.html')
-
-# #PRODUCTOS
-# @main_bp.route('/productos')
-# @login_required
-# def productos():
-#     return render_template('main/productos.html')
 @main_bp.route('/inventario')
 @login_required
 def inventario():

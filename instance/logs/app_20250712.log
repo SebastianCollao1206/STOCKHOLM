@@ -178,3 +178,24 @@
 2025-07-12 12:55:47,441 - app - INFO - Sistema de logging configurado correctamente
 2025-07-12 13:01:08,818 - app - INFO - Sistema de logging configurado correctamente
 2025-07-12 13:01:31,028 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 13:02:08,393 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 14:40:39,049 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 14:46:25,099 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 14:46:38,463 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 14:46:56,713 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 14:47:04,453 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 14:48:26,103 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 14:49:12,478 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 14:51:02,606 - notifications - INFO - Alerta de éxito: ¡Éxito! - Has cerrado sesión exitosamente
+2025-07-12 14:51:02,608 - notifications - INFO - Alerta establecida: {'message': 'Has cerrado sesión exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 14:51:02,665 - notifications - INFO - Alerta obtenida: {'message': 'Has cerrado sesión exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-12 14:51:11,343 - notifications - INFO - Alerta de éxito: Hola Juan Rojas - ¡Bienvenido de vuelta!
+2025-07-12 14:51:11,344 - notifications - INFO - Alerta establecida: {'message': '¡Bienvenido de vuelta!', 'type': 'success', 'title': 'Hola Juan Rojas'}
+2025-07-12 14:51:11,394 - notifications - INFO - Alerta obtenida: {'message': '¡Bienvenido de vuelta!', 'title': 'Hola Juan Rojas', 'type': 'success'}
+2025-07-12 14:51:30,378 - notifications - INFO - Alerta de éxito: ¡Éxito! - Has cerrado sesión exitosamente
+2025-07-12 14:51:30,379 - notifications - INFO - Alerta establecida: {'message': 'Has cerrado sesión exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 14:51:30,411 - notifications - INFO - Alerta obtenida: {'message': 'Has cerrado sesión exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-12 14:51:38,291 - notifications - INFO - Alerta de éxito: Hola Sebastian - ¡Bienvenido de vuelta!
+2025-07-12 14:51:38,292 - notifications - INFO - Alerta establecida: {'message': '¡Bienvenido de vuelta!', 'type': 'success', 'title': 'Hola Sebastian'}
+2025-07-12 14:51:38,327 - notifications - INFO - Alerta obtenida: {'message': '¡Bienvenido de vuelta!', 'title': 'Hola Sebastian', 'type': 'success'}
+2025-07-12 14:56:34,370 - app - INFO - Sistema de logging configurado correctamente
