@@ -32,59 +32,45 @@
                     <th>Descuento (%)</th>
                     <th>Fecha Vencimiento</th>
                     <th>Subtotal</th>
-                    <th>Vendedor</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody id="tabla-productos">
-                
-                <!-- {% if productos and productos|length > 0 %}
-                {% for prod in productos %}
+                {% if registro_productos %}
+                {% for producto in registro_productos %}
                 <tr>
-                    <td>{{ prod.nombre }}</td>
-                    <td>S/ {{ prod.precio_compra }}</td>
-                    <td>{{ prod.cantidad }}</td>
-                    <td>{{ prod.descuento }}%</td>
-                    <td>{{ prod.fecha_vencimiento }}</td>
-                    <td>S/ {{ prod.subtotal }}</td>
-                    <td>{{ prod.vendedor }}</td>
+                    <td>{{ producto.nombre_producto }}</td>
+                    <td>S/ {{ "%.2f"|format(producto.precio) }}</td>
+                    <td>{{ producto.cantidad }}</td>
+                    <td>{{ producto.descuento }}%</td>
+                    <td>{{ producto.fecha_vencimiento }}</td>
+                    <td>S/ {{ "%.2f"|format(producto.subtotal) }}</td>
                     <td>
+                        <a href="{{ url_for('main.detalle_producto_editar', id_temp=producto.id_temp) }}"
+                            class="btn btn-warning btn-sm m-1">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <form method="POST"
+                            action="{{ url_for('main.detalle_producto_eliminar', id_temp=producto.id_temp) }}"
+                            style="display: inline;"
+                            onsubmit="return confirm('¿Estás seguro de eliminar este producto?')">
+                            <button type="submit" class="btn btn-danger btn-sm m-1">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 {% endfor %}
+                <tr class="table-info fw-bold">
+                    <td colspan="5" class="text-end">TOTAL:</td>
+                    <td>S/ {{ "%.2f"|format(total_general) }}</td>
+                    <td></td>
+                </tr>
                 {% else %}
                 <tr>
-                    <td colspan="8" class="text-muted">No hay productos registrados.</td>
+                    <td colspan="7" class="text-muted">No hay productos en el registro</td>
                 </tr>
-                {% endif %} -->
-                <tr>
-                    <td>Leche Gloria 1L</td>
-                    <td>S/ 4.50</td>
-                    <td>12</td>
-                    <td>5%</td>
-                    <td>2025-12-15</td>
-                    <td>S/ 51.30</td>
-                    <td>Distribuidora Sur</td>
-                    <td>
-                        <a href="/detalle/producto/editar/1" class="btn btn-warning btn-sm m-1">
-                            <i class="bi bi-pencil"></i>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Arroz Costeño 5kg</td>
-                    <td>S/ 18.90</td>
-                    <td>6</td>
-                    <td>0%</td>
-                    <td>2026-03-01</td>
-                    <td>S/ 113.40</td>
-                    <td>Mayorista Norte</td>
-                    <td>
-                        <a href="/detalle/producto/editar/2" class="btn btn-warning btn-sm m-1">
-                            <i class="bi bi-pencil"></i>
-                        </a>
-                    </td>
-                </tr>
+                {% endif %}
             </tbody>
         </table>
     </div>
@@ -96,8 +82,17 @@
         </div>
 
         <div class="col-md-3">
-            <label for="hora" class="form-label fw-medium">Hora</label>
-            <input type="time" id="hora" name="hora" class="form-control" required>
+            <label for="vendedor" class="form-label fw-medium">Vendedor</label>
+            <select id="vendedor" name="vendedor" class="form-select" required>
+                <option disabled selected value="">Selecciona un establecimiento</option>
+                <option value="1">Juna</option>
+                <option value="2">Jaime</option>
+            </select>
+            <div class="mt-2">
+                <small class="text-muted">¿No lo encuentras?
+                    <a href="/vendedor/agregar" class="text-primary text-decoration-none">Agrégalo aquí</a>
+                </small>
+            </div>
         </div>
 
         <div class="col-md-3">
@@ -115,9 +110,12 @@
         </div>
 
         <div class="col-md-2 d-flex align-items-center justify-content-center">
-            <button type="button" class="btn btn-danger btn-agregar border-0 text-white" onclick="limpiarTabla()">
-                <i class="bi bi-trash me-2"></i>Limpiar
-            </button>
+            <form method="POST" action="{{ url_for('main.detalle_registro_limpiar') }}" style="display: inline;"
+                onsubmit="return confirm('¿Estás seguro de limpiar todo el registro?')">
+                <button type="submit" class="btn btn-danger btn-agregar border-0 text-white">
+                    <i class="bi bi-trash me-2"></i>Limpiar
+                </button>
+            </form>
         </div>
     </div>
 

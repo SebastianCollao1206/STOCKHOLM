@@ -49,34 +49,6 @@ class EstablecimientoDAO:
             db.session.rollback()
             raise Exception(f"Error al actualizar establecimiento: {str(e)}")
     
-    # @staticmethod
-    # def obtener_establecimiento_por_id(id_establecimiento, id_usuario):
-    #     try:
-    #         query = text("""
-    #             SELECT e.idEstablecimiento, e.establecimiento, e.direccion, e.horaApertura, e.horaCierre
-    #             FROM Establecimiento e
-    #             INNER JOIN UsuarioEstablecimiento ue ON e.idEstablecimiento = ue.idEstablecimiento
-    #             WHERE e.idEstablecimiento = :p_idEstablecimiento AND ue.idUsuario = :p_idUsuario
-    #         """)
-    #         result = db.session.execute(query, {
-    #             'p_idEstablecimiento': id_establecimiento,
-    #             'p_idUsuario': id_usuario
-    #         })
-    #         row = result.fetchone()
-            
-    #         if row:
-    #             return {
-    #                 'idEstablecimiento': row[0],
-    #                 'establecimiento': row[1],
-    #                 'direccion': row[2],
-    #                 'horaApertura': EstablecimientoDAO._format_time_for_display(row[3]),
-    #                 'horaCierre': EstablecimientoDAO._format_time_for_display(row[4])
-    #             }
-    #         return None
-            
-    #     except Exception as e:
-    #         raise Exception(f"Error al obtener información del establecimiento: {str(e)}")
-    
     @staticmethod
     def obtener_establecimiento_por_id(id_establecimiento, id_usuario):
         try:
@@ -135,7 +107,7 @@ class EstablecimientoDAO:
     @staticmethod
     def listar_por_usuario(id_usuario):
         try:
-            query = text("CALL listarEstablecimientosDeUsuario(:p_idUsuario)")
+            query = text("CALL usp_listarEstablecimientosDeUsuario(:p_idUsuario)")
             result = db.session.execute(query, {'p_idUsuario': id_usuario})
             
             establecimientos = []
@@ -220,3 +192,4 @@ class EstablecimientoDAO:
             
         except Exception as e:
             raise Exception(f"Error al listar establecimientos: {str(e)}")
+    

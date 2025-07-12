@@ -23,25 +23,27 @@
 
         <div class="row mb-4 mt-5 d-flex justify-content-center align-items-center gap-4">
             <div class="col-md-5">
-                <label for="nombre-producto" class="form-label fw-medium">Nombre del producto</label>
-                <select id="nombre-producto" name="nombre_producto" class="form-select" required>
-                    <option disabled selected value="">Selecciona un producto</option>
+                <label for="categoria" class="form-label fw-medium">Categoria del producto</label>
+                <select id="categoria" name="categoria" class="form-select" required>
+                    <option disabled selected value="">Selecciona una categoria</option>
+                    {% for categoria in categorias %}
+                    <option value="{{ categoria.idCategoria }}">{{ categoria.categoria }}</option>
+                    {% endfor %}
                 </select>
-                <div class="mt-2">
-                    <small class="text-muted">¿No encuentras el producto?
-                        <a href="/producto/agregar" class="text-primary text-decoration-none">Agrégalo aquí</a>
-                    </small>
-                </div>
             </div>
 
             <div class="col-md-5">
                 <label for="marca" class="form-label fw-medium">Marca</label>
                 <select id="marca" name="marca" class="form-select" required>
                     <option disabled selected value="">Selecciona una marca</option>
+                    {% for marca in marcas %}
+                    <option value="{{ marca.idMarca }}">{{ marca.marca }}</option>
+                    {% endfor %}
                 </select>
                 <div class="mt-2">
                     <small class="text-muted">¿No encuentras la marca?
-                        <a href="/marca/agregar" class="text-primary text-decoration-none">Agrégala aquí</a>
+                        <a href="{{ url_for('main.marca_agregar') }}" class="text-primary text-decoration-none">Agrégala
+                            aquí</a>
                     </small>
                 </div>
             </div>
@@ -49,67 +51,31 @@
 
         <div class="row mb-4 d-flex justify-content-center align-items-center gap-4">
             <div class="col-md-5">
-                <label for="variacion" class="form-label fw-medium">Variación</label>
-                <input type="text" id="variacion" name="variacion" class="form-control"
-                    placeholder="Ej: Entera, Deslactosada" required>
+                <label for="nombre-producto" class="form-label fw-medium">Nombre del producto</label>
+                <input type="text" id="nombre-producto" name="nombre-producto" class="form-control"
+                    placeholder="Ej: Leche, Pan" required>
             </div>
 
             <div class="col-md-5">
-                <label for="empaque" class="form-label fw-medium">Tipo de empaque</label>
-                <select id="empaque" name="empaque" class="form-select" required>
-                    <option disabled selected value="">Selecciona un tipo</option>
-                    <option>Botella</option>
-                    <option>Bolsa</option>
-                    <option>Caja</option>
-                    <option>Lata</option>
-                    <option>Pack</option>
-                    <option>Otro</option>
-                </select>
+                <label for="descripcion" class="form-label fw-medium">Descripción</label>
+                <input type="text" id="descripcion" name="descripcion" class="form-control"
+                    placeholder="Ej: leche deslactosada" required>
             </div>
         </div>
 
         <div class="row mb-4 d-flex justify-content-center align-items-center gap-4">
             <div class="col-md-5">
-                <label for="unidad-medida" class="form-label fw-medium">Unidad de medida</label>
-                <select id="unidad-medida" name="unidad_medida" class="form-select" required>
-                    <option disabled selected value="">Selecciona una unidad</option>
-                    <option>Litros</option>
-                    <option>Mililitros</option>
-                    <option>Gramos</option>
-                    <option>Kilogramos</option>
-                    <option>Unidades</option>
-                    <option>Otros</option>
-                </select>
-            </div>
-
-            <div class="col-md-5">
-                <label for="unidades-empaque" class="form-label fw-medium">Unidades por empaque</label>
-                <input type="number" min="1" id="unidades-empaque" name="unidades_empaque" class="form-control"
-                    placeholder="Ej: 6" required>
-            </div>
-        </div>
-
-        <div class="row mb-4 d-flex justify-content-center align-items-center gap-4">
-            <div class="col-md-5">
-                <label for="precio-empaque" class="form-label fw-medium">Precio por empaque (S/)</label>
-                <input type="number" step="0.01" min="0" id="precio-empaque" name="precio_empaque" class="form-control"
-                    placeholder="Ej: 12.50" required>
+                <label for="imagen" class="form-label fw-medium">URL de la imagen del producto</label>
+                <input type="url" id="imagen" name="imagen" class="form-control"
+                    placeholder="https://ejemplo.com/imagen.jpg">
             </div>
 
             <div class="col-md-5">
                 <label for="valoracion" class="form-label fw-medium">Valoración (1 al 10)</label>
                 <input type="number" id="valoracion" name="valoracion" class="form-control" placeholder="Ej: 7" min="1"
-                    max="10" required>
+                    max="10" step="0.1" required>
             </div>
 
-        </div>
-
-        <div class="row mb-4 d-flex justify-content-center">
-            <div class="col-md-9">
-                <label for="imagen" class="form-label fw-medium">URL de la imagen del producto</label>
-                <input type="url" id="imagen" name="imagen" class="form-control"
-                    placeholder="https://ejemplo.com/imagen.jpg">
-            </div>
         </div>
 
         <div class="d-flex justify-content-center mt-5">

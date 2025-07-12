@@ -1,7 +1,12 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash, session
+from flask import Blueprint, render_template, request, redirect, url_for, flash, session, jsonify
 from app.utils.auth_decorators import login_required
 from app.utils.notificaciones import Notificacion
 from app.service.establecimiento_service import ServicioEstablecimiento
+from app.service.vendedor_service import ServicioVendedor
+from app.service.marca_service import ServicioMarca
+from app.service.categoria_service import ServicioCategoria
+from app.service.producto_service import ServicioProducto
+from app.service.registro_temporal_service import ServicioRegistroTemporal
 
 main_bp = Blueprint('main', __name__)
 
@@ -12,22 +17,159 @@ def reportes():
     return render_template('main/reportes.html')
 
 #VENDEDOR
-@main_bp.route('/vendedor/agregar')
+@main_bp.route('/vendedor/agregar', methods=['GET', 'POST'])
 @login_required
 def vendedor_agregar():
-    return render_template('main/agregar_vendedor.html')
+    try:
+        user_id = session.get('user_id')
+        if not user_id:
+            Notificacion.error('Error de sesión')
+            return redirect(url_for('auth.login'))
+        
+        if request.method == 'POST':
+            nombre = request.form.get('nombre')
+            valoracion = request.form.get('valoracion')
+            id_establecimiento = request.form.get('establecimiento')
+            
+            if not all([nombre, valoracion, id_establecimiento]):
+                Notificacion.error('Todos los campos son obligatorios')
+                result = ServicioEstablecimiento.listar_establecimientos_usuario(user_id)
+                establecimientos = result['establecimientos'] if result['success'] else []
+                return render_template('main/agregar_vendedor.html', establecimientos=establecimientos)
+            
+            result = ServicioVendedor.crear_vendedor(
+                nombre, valoracion, int(id_establecimiento), user_id
+            )
+            
+            if result['success']:
+                Notificacion.success(result['message'])
+                return redirect(url_for('main.vendedor_agregar'))
+            else:
+                Notificacion.error(result['message'])
+                result_est = ServicioEstablecimiento.listar_establecimientos_usuario(user_id)
+                establecimientos = result_est['establecimientos'] if result_est['success'] else []
+                return render_template('main/agregar_vendedor.html', establecimientos=establecimientos)
+        
+        result = ServicioEstablecimiento.listar_establecimientos_usuario(user_id)
+        
+        if not result['success']:
+            Notificacion.error('Error al cargar los establecimientos')
+            establecimientos = []
+        else:
+            establecimientos = result['establecimientos']
+        
+        return render_template('main/agregar_vendedor.html', establecimientos=establecimientos)
+        
+    except Exception as e:
+        Notificacion.error('Error interno del servidor')
+        return render_template('main/agregar_vendedor.html', establecimientos=[])
 
 #PRESENTACION
-@main_bp.route('/presentacion/agregar')
+@main_bp.route('/presentacion/agregar', methods=['GET', 'POST'])
 @login_required
-def presentacion_agregar():
-    return render_template('main/agregar_presentacion.html')
+def producto_agregar():
+    try:
+        user_id = session.get('user_id')
+        if not user_id:
+            Notificacion.error('Error de sesión')
+            return redirect(url_for('auth.login'))
+        
+        if request.method == 'POST':
+            id_categoria = request.form.get('categoria')
+            nombre_producto = request.form.get('nombre-producto')
+            descripcion = request.form.get('descripcion')
+            id_marca = request.form.get('marca')
+            valoracion = request.form.get('valoracion')
+            imagen = request.form.get('imagen')
+            
+            if not all([id_categoria, nombre_producto, descripcion, id_marca, valoracion]):
+                Notificacion.error('Todos los campos son obligatorios')
+                result_categorias = ServicioCategoria.listar_categorias()
+                result_marcas = ServicioMarca.listar_marcas()
+                
+                categorias = result_categorias['categorias'] if result_categorias['success'] else []
+                marcas = result_marcas['marcas'] if result_marcas['success'] else []
+                
+                return render_template('main/agregar_presentacion.html', 
+                                     categorias=categorias, 
+                                     marcas=marcas)
+            
+            result = ServicioProducto.crear_producto(
+                id_categoria=id_categoria,
+                nombre_producto=nombre_producto,
+                descripcion=descripcion,
+                id_marca=id_marca,
+                valoracion=valoracion,
+                imagen=imagen if imagen else None
+            )
+            
+            if result['success']:
+                Notificacion.success(result['message'])
+                return redirect(url_for('main.producto_agregar'))
+            else:
+                Notificacion.error(result['message'])
+                result_categorias = ServicioCategoria.listar_categorias()
+                result_marcas = ServicioMarca.listar_marcas()
+                
+                categorias = result_categorias['categorias'] if result_categorias['success'] else []
+                marcas = result_marcas['marcas'] if result_marcas['success'] else []
+                
+                return render_template('main/agregar_presentacion.html', 
+                                     categorias=categorias, 
+                                     marcas=marcas)
+        
+        result_categorias = ServicioCategoria.listar_categorias()
+        result_marcas = ServicioMarca.listar_marcas()
+        
+        if not result_categorias['success']:
+            Notificacion.error('Error al cargar las categorías')
+            categorias = []
+        else:
+            categorias = result_categorias['categorias']
+            
+        if not result_marcas['success']:
+            Notificacion.error('Error al cargar las marcas')
+            marcas = []
+        else:
+            marcas = result_marcas['marcas']
+        
+        return render_template('main/agregar_presentacion.html', 
+                             categorias=categorias, 
+                             marcas=marcas)
+        
+    except Exception as e:
+        Notificacion.error('Error interno del servidor')
+        return render_template('main/agregar_presentacion.html', 
+                             categorias=[], 
+                             marcas=[])
+
 
 #MARCA
-@main_bp.route('/marca/agregar')
+@main_bp.route('/marca/agregar', methods=['GET', 'POST'])
 @login_required
 def marca_agregar():
-    return render_template('main/agregar_marca.html')
+    try:
+        if request.method == 'POST':
+            nombre = request.form.get('nombre')
+            
+            if not nombre:
+                Notificacion.error('El nombre de la marca es obligatorio')
+                return render_template('main/agregar_marca.html')
+            
+            result = ServicioMarca.crear_marca(nombre)
+            
+            if result['success']:
+                Notificacion.success(result['message'])
+                return redirect(url_for('main.marca_agregar'))
+            else:
+                Notificacion.error(result['message'])
+                return render_template('main/agregar_marca.html')
+        
+        return render_template('main/agregar_marca.html')
+        
+    except Exception as e:
+        Notificacion.error('Error interno del servidor')
+        return render_template('main/agregar_marca.html')
 
 #INVENTARIO
 @main_bp.route('/inventario')
@@ -40,11 +182,6 @@ def inventario():
 @login_required
 def productos():
     return render_template('main/productos.html')
-
-@main_bp.route('/producto/agregar')
-@login_required
-def producto_agregar():
-    return render_template('main/agregar_producto.html')
 
 #REGISTROS
 @main_bp.route('/registros')
@@ -64,49 +201,206 @@ def detalle_registro(id):
 @main_bp.route('/registro/agregar')
 @login_required
 def registro_agregar():
-    return render_template('main/agregar_registro.html')
+    try:
+        user_id = session.get('user_id')
+        if not user_id:
+            Notificacion.error('Error de sesión')
+            return redirect(url_for('auth.login'))
+        
+        result_registro = ServicioRegistroTemporal.listar_productos_del_registro()
+        registro_productos = result_registro['productos'] if result_registro['success'] else []
+        
+        return render_template(
+            'main/agregar_registro.html',  
+            registro_productos=registro_productos,
+            total_items=result_registro.get('total_items', 0),
+            total_general=result_registro.get('total_general', 0)
+        )
+        
+    except Exception as e:
+        print(f"Error en detalle_registro: {str(e)}")
+        Notificacion.error('Error interno del servidor')
+        return render_template('main/agregar_registro.html', 
+                             registro_productos=[], 
+                             total_items=0, 
+                             total_general=0)
     
 #DETALLE    
 @main_bp.route('/detalle/producto/agregar', methods=['GET', 'POST'])
 @login_required
 def detalle_producto_agregar():
     try:
+        user_id = session.get('user_id')
+        if not user_id:
+            Notificacion.error('Error de sesión')
+            return redirect(url_for('auth.login'))
+        
         if request.method == 'POST':
             producto_id = request.form.get('producto')
-            vendedor_id = request.form.get('vendedor')
+            precio = request.form.get('precio')
             cantidad = request.form.get('cantidad')
             descuento = request.form.get('descuento') or 0
             fecha_vencimiento = request.form.get('fecha_vencimiento')
             
+            if not producto_id or not precio or not cantidad or not fecha_vencimiento:        
+                Notificacion.error('Todos los campos son obligatorios')
+                return redirect(url_for('main.detalle_producto_agregar'))
+            
+            try:
+                producto_id = int(producto_id)
+                print(f"[DEBUG] Producto ID convertido a int: {producto_id}")
+            except (ValueError, TypeError):
+                print(f"[ERROR] Producto ID no válido: {producto_id}")
+                Notificacion.error('Producto seleccionado no válido')
+                return redirect(url_for('main.detalle_producto_agregar'))
+            
+            result = ServicioRegistroTemporal.agregar_producto_al_registro(
+                producto_id=producto_id,
+                precio=precio,
+                cantidad=cantidad,
+                descuento=descuento,
+                fecha_vencimiento=fecha_vencimiento
+            )
+            
+            if result['success']:
+                Notificacion.success(result['message'])
+                return redirect(url_for('main.registro_agregar'))
+            else:
+                Notificacion.error(result['message'])
+                return redirect(url_for('main.detalle_producto_agregar'))
+        
+        result_productos = ServicioProducto.listar_productos()
+        
+        if not result_productos['success']:
+            Notificacion.error('Error al cargar los productos')
+            productos = []
+        else:
+            productos = result_productos['productos']
+            print(f"[DEBUG] Productos cargados: {len(productos)}")
+            for i, p in enumerate(productos[:3]): 
+                print(f"[DEBUG] Producto {i+1}: ID={p.get('id', 'N/A')}, Nombre={p.get('nombreProducto', 'N/A')}")
+        
+        result_registro = ServicioRegistroTemporal.listar_productos_del_registro()
+        registro_productos = result_registro['productos'] if result_registro['success'] else []
+        
         return render_template(
             'main/gestion_producto_detalle.html',
-            modo='agregar'
+            modo='agregar',
+            productos=productos,
+            registro_productos=registro_productos,
+            total_items=result_registro.get('total_items', 0),
+            total_general=result_registro.get('total_general', 0)
         )
+        
     except Exception as e:
-        print(f"Error: {str(e)}")
-        return render_template('main/gestion_producto_detalle.html', modo='agregar')  
+        print(f"[ERROR] Error en detalle_producto_agregar: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        Notificacion.error('Error interno del servidor')
+        return render_template('main/gestion_producto_detalle.html', 
+                             modo='agregar', 
+                             productos=[], 
+                             registro_productos=[])
 
-@main_bp.route('/detalle/producto/editar/<int:id>', methods=['GET', 'POST'])
+@main_bp.route('/detalle/producto/editar/<int:id_temp>', methods=['GET', 'POST'])
 @login_required
-def detalle_producto_editar(id):
+def detalle_producto_editar(id_temp):
     try:
-
+        user_id = session.get('user_id')
+        if not user_id:
+            Notificacion.error('Error de sesión')
+            return redirect(url_for('auth.login'))
+        
         if request.method == 'POST':
-            producto_id = request.form.get('producto')
-            vendedor_id = request.form.get('vendedor')
+            precio = request.form.get('precio')
             cantidad = request.form.get('cantidad')
             descuento = request.form.get('descuento') or 0
             fecha_vencimiento = request.form.get('fecha_vencimiento')
-
+            
+            if not all([precio, cantidad, fecha_vencimiento]):
+                Notificacion.error('Todos los campos son obligatorios')
+                return redirect(url_for('main.detalle_producto_editar', id_temp=id_temp))
+            
+            result = ServicioRegistroTemporal.editar_producto_del_registro(
+                id_temp=id_temp,
+                precio=precio,
+                cantidad=cantidad,
+                descuento=descuento,
+                fecha_vencimiento=fecha_vencimiento
+            )
+            
+            if result['success']:
+                Notificacion.success(result['message'])
+                return redirect(url_for('main.registro_agregar'))
+            else:
+                Notificacion.error(result['message'])
+                return redirect(url_for('main.detalle_producto_editar', id_temp=id_temp))
+        
+        result_item = ServicioRegistroTemporal.obtener_producto_del_registro(id_temp)
+        
+        if not result_item['success']:
+            Notificacion.error('Producto no encontrado en el registro')
+            return redirect(url_for('main.detalle_producto_agregar'))
+        
+        item = result_item['item']
+        
+        result_productos = ServicioProducto.listar_productos()
+        productos = result_productos['productos'] if result_productos['success'] else []
+        
+        result_registro = ServicioRegistroTemporal.listar_productos_del_registro()
+        registro_productos = result_registro['productos'] if result_registro['success'] else []
+        
         return render_template(
             'main/gestion_producto_detalle.html',
-            modo='editar'
+            modo='editar',
+            item=item,
+            productos=productos,
+            registro_productos=registro_productos,
+            total_items=result_registro.get('total_items', 0),
+            total_general=result_registro.get('total_general', 0)
         )
+        
     except Exception as e:
-        print(f"Error: {str(e)}")
+        print(f"Error en detalle_producto_editar: {str(e)}")
+        Notificacion.error('Error interno del servidor')
+        return redirect(url_for('main.detalle_producto_agregar'))
+    
+@main_bp.route('/detalle/producto/eliminar/<int:id_temp>', methods=['POST'])
+@login_required
+def detalle_producto_eliminar(id_temp):
+    try:
+        result = ServicioRegistroTemporal.eliminar_producto_del_registro(id_temp)
+        
+        if result['success']:
+            Notificacion.success(result['message'])
+        else:
+            Notificacion.error(result['message'])
+        
+        return redirect(url_for('main.registro_agregar'))
+        
+    except Exception as e:
+        print(f"Error en detalle_producto_eliminar: {str(e)}")
+        Notificacion.error('Error interno del servidor')
         return redirect(url_for('main.detalle_producto_agregar')) 
-
-
+    
+@main_bp.route('/detalle/registro/limpiar', methods=['POST'])
+@login_required
+def detalle_registro_limpiar():
+    try:
+        result = ServicioRegistroTemporal.limpiar_registro()
+        
+        if result['success']:
+            Notificacion.success(result['message'])
+        else:
+            Notificacion.error(result['message'])
+        
+        return redirect(url_for('main.registro_agregar'))
+        
+    except Exception as e:
+        print(f"Error en detalle_registro_limpiar: {str(e)}")
+        Notificacion.error('Error interno del servidor')
+        return redirect(url_for('main.detalle_producto_agregar')) 
+        
 #ESTABLECIMIENTO
 @main_bp.route('/establecimiento')
 @login_required

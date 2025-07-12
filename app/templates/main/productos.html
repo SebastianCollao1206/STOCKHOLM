@@ -4,15 +4,35 @@
 
 <div class="container mt-4">
 
-    <div class="row d-flex container-fluid justify-content-center gy-3">
-        <div class="col-md-7 d-flex justify-content-center">
-            <h2 class="text-center fw-semibold">Productos</h2>
+    <div class="row d-flex container-fluid justify-content-center mb-4">
+        <div class="d-flex justify-content-center">
+            <h2 class="text-center fw-semibold">Productos Comprados</h2>
         </div>
-        <div class="col-md-5 d-flex text-center  justify-content-center">
-            <a class="text-decoration-none" href="/producto/agregar">
-                <button type="button" class="btn text-white btn-primary btn-usuario border-0">Agregar producto<i
-                        class="bi bi-plus-lg mx-3"></i></button>
-            </a>
+    </div>
+
+    <div class="card shadow-sm mb-5 mt-lg-0 mt-4">
+        <div class="card-body">
+            <form method="GET" action="#" class="row g-3 g-lg-5 align-items-end d-flex justify-content-center">
+
+                <div class="col-md-4 col-sm-6">
+                    <label class="form-label small fw-bold">Nombre</label>
+                    <input type="text" name="nombre" class="form-control" placeholder="Buscar por nombre">
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <label class="form-label small fw-bold">Ordenar por nombre</label>
+                    <select name="orden_nombre" id="orden_nombre" class="form-select">
+                        <option value="asc">A-Z (ascendente)</option>
+                        <option value="desc">Z-A (descendente)</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4 col-sm-12 text-center text-md-start">
+                    <button type="submit" class="btn btn-danger border-0 btn-filtrar text-white w-100">
+                        <i class="bi bi-search me-2"></i>Filtrar
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -20,12 +40,10 @@
         <table class="table table-bordered text-center">
             <thead class="table-dark">
                 <tr>
-                    <th>Empaque</th>
+                    <th>Categoria</th>
                     <th>Producto</th>
-                    <th>Variación</th>
+                    <th>Descripción</th>
                     <th>Marca</th>
-                    <th>Unidad</th>
-                    <th>Cantidad por unidad</th>
                     <th>Valoración producto</th>
                     <th>Precio</th>
                     <th>Imagen</th>
@@ -33,34 +51,30 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Caja</td>
+                    <td>Lacteos</td>
                     <td>Arroz Extra</td>
                     <td>Grano largo</td>
                     <td>Costeño</td>
-                    <td>Kg</td>
-                    <td>5</td>
-                    <td>4.5 / 5</td>
+                    <td>4.5 / 10</td>
                     <td>S/ 20.00</td>
                     <td>
-                        <img src="https://corporacionliderperu.com/50720-large_default/gloria-leche-tarro-azul-gde-x-390-gr.jpg" alt="Arroz Extra" style="width: 50px;"
-                            class="rounded">
+                        <img src="https://corporacionliderperu.com/50720-large_default/gloria-leche-tarro-azul-gde-x-390-gr.jpg"
+                            alt="Arroz Extra" style="width: 50px;" class="rounded">
                     </td>
-                    
+
                 </tr>
                 <tr>
-                    <td>Lata</td>
-                    <td>Leche Gloria</td>
-                    <td>Entera</td>
-                    <td>Gloria</td>
-                    <td>Lata</td>
-                    <td>410 ml</td>
-                    <td>4.8 / 5</td>
-                    <td>S/ 4.20</td>
+                    <td>Lacteos</td>
+                    <td>Arroz Extra</td>
+                    <td>Grano largo</td>
+                    <td>Costeño</td>
+                    <td>4.5 / 10</td>
+                    <td>S/ 20.00</td>
                     <td>
-                        <img src="https://corporacionliderperu.com/50720-large_default/gloria-leche-tarro-azul-gde-x-390-gr.jpg" alt="Leche Gloria" style="width: 50px;"
-                            class="rounded">
+                        <img src="https://corporacionliderperu.com/50720-large_default/gloria-leche-tarro-azul-gde-x-390-gr.jpg"
+                            alt="Arroz Extra" style="width: 50px;" class="rounded">
                     </td>
-                    
+
                 </tr>
             </tbody>
         </table>
