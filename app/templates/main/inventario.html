@@ -42,16 +42,19 @@
                 </tr>
             </thead>
             <tbody>
+                {% if inventario %}
+                {% for item in inventario %}
                 <tr>
-                    <td>Leche Gloria</td>
-                    <td>2025-08-15</td>
-                    <td>24</td>
+                    <td>{{ item.nombre_producto }} - {{ item.descripcion }}</td>
+                    <td>{{ item.fecha_vencimiento if item.fecha_vencimiento else 'N/A' }}</td>
+                    <td>{{ item.stock }}</td>
                 </tr>
+                {% endfor %}
+                {% else %}
                 <tr>
-                    <td>Arroz Extra Costeño</td>
-                    <td>2026-01-10</td>
-                    <td>15</td>
+                    <td colspan="3" class="text-center">No hay productos en el inventario</td>
                 </tr>
+                {% endif %}
             </tbody>
         </table>
     </div>

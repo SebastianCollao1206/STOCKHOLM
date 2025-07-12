@@ -144,3 +144,46 @@ class ProductoDAO:
             
         except Exception as e:
             raise Exception(f"Error al listar usuario productos de usuario: {str(e)}")
+        
+    @staticmethod
+    def listar_inventario_de_usuario(id_usuario):
+        try:
+            query = text("CALL usp_listarInventarioDeUsuario(:p_idUsuario)")
+            result = db.session.execute(query, {'p_idUsuario': id_usuario})
+            
+            inventario = []
+            for row in result:
+                inventario.append({
+                    'nombre_producto': row[0],
+                    'descripcion': row[1],
+                    'fecha_vencimiento': row[2],
+                    'stock': row[3]
+                })
+            
+            return inventario
+            
+        except Exception as e:
+            raise Exception(f"Error al listar inventario de usuario: {str(e)}")
+
+    @staticmethod
+    def listar_productos_comprados_por_usuario(id_usuario):
+        try:
+            query = text("CALL usp_listarProductosCompradosPorUsuario(:p_idUsuario)")
+            result = db.session.execute(query, {'p_idUsuario': id_usuario})
+            
+            productos = []
+            for row in result:
+                productos.append({
+                    'nombre': row[0],
+                    'descripcion': row[1],
+                    'categoria': row[2],
+                    'marca': row[3],
+                    'valoracion_producto': row[4],
+                    'precio': row[5],
+                    'imagen': row[6]
+                })
+            
+            return productos
+            
+        except Exception as e:
+            raise Exception(f"Error al listar productos comprados por usuario: {str(e)}")

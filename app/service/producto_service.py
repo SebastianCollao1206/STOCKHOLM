@@ -172,3 +172,37 @@ class ServicioProducto:
                 'message': str(e),
                 'productos': []
             }
+            
+    @staticmethod
+    def listar_inventario_de_usuario(id_usuario):
+        try:
+            inventario = ProductoDAO.listar_inventario_de_usuario(id_usuario)
+            
+            return {
+                'success': True,
+                'inventario': inventario
+            }
+            
+        except Exception as e:
+            return {
+                'success': False,
+                'message': str(e),
+                'inventario': []
+            }
+
+    @staticmethod
+    def listar_productos_comprados_por_usuario(id_usuario):
+        try:
+            productos = ProductoDAO.listar_productos_comprados_por_usuario(id_usuario)
+            
+            return {
+                'success': True,
+                'productos': productos
+            }
+            
+        except Exception as e:
+            return {
+                'success': False,
+                'message': str(e),
+                'productos': []
+            }

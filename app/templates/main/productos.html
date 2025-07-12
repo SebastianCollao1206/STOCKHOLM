@@ -50,32 +50,30 @@
                 </tr>
             </thead>
             <tbody>
+                {% if productos %}
+                {% for producto in productos %}
                 <tr>
-                    <td>Lacteos</td>
-                    <td>Arroz Extra</td>
-                    <td>Grano largo</td>
-                    <td>Costeño</td>
-                    <td>4.5 / 10</td>
-                    <td>S/ 20.00</td>
+                    <td>{{ producto.categoria }}</td>
+                    <td>{{ producto.nombre }}</td>
+                    <td>{{ producto.descripcion }}</td>
+                    <td>{{ producto.marca }}</td>
+                    <td>{{ producto.valoracion_producto }} / 10</td>
+                    <td>S/ {{ "%.2f"|format(producto.precio) if producto.precio else 'N/A' }}</td>
                     <td>
-                        <img src="https://corporacionliderperu.com/50720-large_default/gloria-leche-tarro-azul-gde-x-390-gr.jpg"
-                            alt="Arroz Extra" style="width: 50px;" class="rounded">
+                        {% if producto.imagen %}
+                        <img src="{{ producto.imagen }}" alt="{{ producto.nombre }}" style="width: 50px;"
+                            class="rounded">
+                        {% else %}
+                        <span class="text-muted">Sin imagen</span>
+                        {% endif %}
                     </td>
-
                 </tr>
+                {% endfor %}
+                {% else %}
                 <tr>
-                    <td>Lacteos</td>
-                    <td>Arroz Extra</td>
-                    <td>Grano largo</td>
-                    <td>Costeño</td>
-                    <td>4.5 / 10</td>
-                    <td>S/ 20.00</td>
-                    <td>
-                        <img src="https://corporacionliderperu.com/50720-large_default/gloria-leche-tarro-azul-gde-x-390-gr.jpg"
-                            alt="Arroz Extra" style="width: 50px;" class="rounded">
-                    </td>
-
+                    <td colspan="7" class="text-center">No hay productos comprados</td>
                 </tr>
+                {% endif %}
             </tbody>
         </table>
 

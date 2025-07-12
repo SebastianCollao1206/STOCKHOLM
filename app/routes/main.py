@@ -172,17 +172,61 @@ def marca_agregar():
         Notificacion.error('Error interno del servidor')
         return render_template('main/agregar_marca.html')
 
-#INVENTARIO
+# #INVENTARIO
+# @main_bp.route('/inventario')
+# @login_required
+# def inventario():
+#     return render_template('main/inventario.html')
+
+# #PRODUCTOS
+# @main_bp.route('/productos')
+# @login_required
+# def productos():
+#     return render_template('main/productos.html')
 @main_bp.route('/inventario')
 @login_required
 def inventario():
-    return render_template('main/inventario.html')
+    try:
+        id_usuario = session.get('user_id')
+        
+        if not id_usuario:
+            return render_template('main/inventario.html', inventario=[], error="Usuario no autenticado")
+        
+        resultado = ServicioProducto.listar_inventario_de_usuario(id_usuario)
+        
+        if resultado['success']:
+            inventario = resultado['inventario']
+        else:
+            inventario = []
+            
+        return render_template('main/inventario.html', inventario=inventario)
+        
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        return render_template('main/inventario.html', inventario=[], error=f"Error al cargar inventario: {str(e)}")
 
 #PRODUCTOS
 @main_bp.route('/productos')
 @login_required
 def productos():
-    return render_template('main/productos.html')
+    try:
+        id_usuario = session.get('user_id')
+        
+        if not id_usuario:
+            return render_template('main/productos.html', productos=[], error="Usuario no autenticado")
+        
+        resultado = ServicioProducto.listar_productos_comprados_por_usuario(id_usuario)
+        
+        if resultado['success']:
+            productos = resultado['productos']
+        else:
+            productos = []
+            
+        return render_template('main/productos.html', productos=productos)
+        
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        return render_template('main/productos.html', productos=[], error=f"Error al cargar productos: {str(e)}")
 
 #REGISTROS
 @main_bp.route('/registros')
@@ -206,14 +250,6 @@ def registros():
     except Exception as e:
         return render_template('main/registros.html', compras=[], error=f"Error al cargar registros: {str(e)}")
 
-# @main_bp.route('/detalle/registro/<int:id>', methods=['GET', 'POST'])
-# @login_required
-# def detalle_registro(id):
-#     try:              
-#         return render_template('main/detalle_registro.html')  
-#     except Exception as e:
-#         print(f"Error: {str(e)}")
-#         return render_template('main/detalle_registro.html')
 @main_bp.route('/detalle/registro/<int:id>', methods=['GET', 'POST'])
 @login_required
 def detalle_registro(id):
