@@ -199,3 +199,4 @@
 2025-07-12 14:51:38,292 - notifications - INFO - Alerta establecida: {'message': '¡Bienvenido de vuelta!', 'type': 'success', 'title': 'Hola Sebastian'}
 2025-07-12 14:51:38,327 - notifications - INFO - Alerta obtenida: {'message': '¡Bienvenido de vuelta!', 'title': 'Hola Sebastian', 'type': 'success'}
 2025-07-12 14:56:34,370 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 14:56:38,333 - app - INFO - Sistema de logging configurado correctamente

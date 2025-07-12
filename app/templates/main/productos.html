@@ -12,24 +12,32 @@
 
     <div class="card shadow-sm mb-5 mt-lg-0 mt-4">
         <div class="card-body">
-            <form method="GET" action="#" class="row g-3 g-lg-5 align-items-end d-flex justify-content-center">
+            <form id="filtroForm" class="row g-3 g-lg-5 align-items-end d-flex justify-content-center">
 
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-3 col-sm-6">
                     <label class="form-label small fw-bold">Nombre</label>
-                    <input type="text" name="nombre" class="form-control" placeholder="Buscar por nombre">
+                    <input type="text" id="filtroNombre" class="form-control" placeholder="Buscar por nombre">
                 </div>
 
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-3 col-sm-6">
+                    <label class="form-label small fw-bold">Marca</label>
+                    <select id="filtroMarca" class="form-select">
+                        <option value="">Todas las marcas</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
                     <label class="form-label small fw-bold">Ordenar por nombre</label>
-                    <select name="orden_nombre" id="orden_nombre" class="form-select">
+                    <select id="ordenNombre" class="form-select">
+                        <option value="">Sin ordenar</option>
                         <option value="asc">A-Z (ascendente)</option>
                         <option value="desc">Z-A (descendente)</option>
                     </select>
                 </div>
 
-                <div class="col-md-4 col-sm-12 text-center text-md-start">
-                    <button type="submit" class="btn btn-danger border-0 btn-filtrar text-white w-100">
-                        <i class="bi bi-search me-2"></i>Filtrar
+                <div class="col-md-3 col-sm-12 text-center text-md-start">
+                    <button type="button" id="btnLimpiar" class="btn btn-secondary border-0 text-white w-100">
+                        <i class="bi bi-arrow-clockwise me-2"></i>Limpiar
                     </button>
                 </div>
             </form>
@@ -49,7 +57,7 @@
                     <th>Imagen</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tablaProductos">
                 {% if productos %}
                 {% for producto in productos %}
                 <tr>
@@ -79,6 +87,138 @@
 
     </div>
 
+    <div id="noResultados" class="text-center mt-4" style="display: none;">
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle me-2"></i>
+            No se encontraron productos que coincidan con los filtros aplicados
+        </div>
+    </div>
+
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const tabla = document.getElementById('tablaProductos');
+        const filtroNombre = document.getElementById('filtroNombre');
+        const filtroMarca = document.getElementById('filtroMarca');
+        const ordenNombre = document.getElementById('ordenNombre');
+        const btnFiltrar = document.getElementById('btnFiltrar');
+        const noResultados = document.getElementById('noResultados');
+        const btnLimpiar = document.getElementById('btnLimpiar');
+
+        const filasOriginales = Array.from(tabla.querySelectorAll('tr'));
+
+        function llenarSelectMarcas() {
+            const marcas = new Set();
+
+            filasOriginales.forEach(fila => {
+                const celdas = fila.querySelectorAll('td');
+                if (celdas.length > 0 && !celdas[0].getAttribute('colspan')) {
+                    const marca = celdas[3].textContent.trim();
+                    if (marca && marca !== '') {
+                        marcas.add(marca);
+                    }
+                }
+            });
+
+            const marcasOrdenadas = Array.from(marcas).sort();
+
+            marcasOrdenadas.forEach(marca => {
+                const option = document.createElement('option');
+                option.value = marca;
+                option.textContent = marca;
+                filtroMarca.appendChild(option);
+            });
+        }
+
+        function aplicarFiltros() {
+            const nombreFiltro = filtroNombre.value.toLowerCase().trim();
+            const marcaFiltro = filtroMarca.value;
+            const ordenFiltro = ordenNombre.value;
+
+            let filasParaProcesar = filasOriginales.filter(fila => {
+                const celdas = fila.querySelectorAll('td');
+                return celdas.length > 0 && !celdas[0].getAttribute('colspan');
+            });
+
+            const filasFiltradas = filasParaProcesar.filter(fila => {
+                const celdas = fila.querySelectorAll('td');
+                let mostrar = true;
+
+                if (nombreFiltro) {
+                    const nombre = celdas[1].textContent.toLowerCase();
+                    if (!nombre.includes(nombreFiltro)) {
+                        mostrar = false;
+                    }
+                }
+
+                if (marcaFiltro) {
+                    const marca = celdas[3].textContent.trim();
+                    if (marca !== marcaFiltro) {
+                        mostrar = false;
+                    }
+                }
+
+                return mostrar;
+            });
+
+            if (ordenFiltro) {
+                filasFiltradas.sort((a, b) => {
+                    const nombreA = a.querySelectorAll('td')[1].textContent.toLowerCase();
+                    const nombreB = b.querySelectorAll('td')[1].textContent.toLowerCase();
+
+                    if (ordenFiltro === 'asc') {
+                        return nombreA.localeCompare(nombreB);
+                    } else if (ordenFiltro === 'desc') {
+                        return nombreB.localeCompare(nombreA);
+                    }
+                    return 0;
+                });
+            }
+
+            filasOriginales.forEach(fila => {
+                fila.style.display = 'none';
+            });
+
+            filasFiltradas.forEach(fila => {
+                fila.style.display = '';
+            });
+
+            if (filasFiltradas.length === 0) {
+                noResultados.style.display = 'block';
+            } else {
+                noResultados.style.display = 'none';
+            }
+
+            if (ordenFiltro && filasFiltradas.length > 0) {
+                filasFiltradas.forEach(fila => {
+                    tabla.appendChild(fila);
+                });
+            }
+        }
+
+        function limpiarFiltros() {
+            filtroNombre.value = '';
+            filtroMarca.value = '';
+            ordenNombre.value = '';
+
+            filasOriginales.forEach(fila => {
+                fila.style.display = '';
+            });
+
+            noResultados.style.display = 'none';
+        }
+
+        
+        btnLimpiar.addEventListener('click', limpiarFiltros);
+
+        filtroNombre.addEventListener('input', aplicarFiltros);
+        filtroMarca.addEventListener('change', aplicarFiltros);
+        ordenNombre.addEventListener('change', aplicarFiltros);
+
+        llenarSelectMarcas();
+        limpiarFiltros();
+    });
+</script>
 
 {% endblock %}

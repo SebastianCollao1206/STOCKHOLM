@@ -16,6 +16,38 @@
         </div>
     </div>
 
+    <div class="card shadow-sm mb-5 mt-4">
+        <div class="card-body">
+            <form id="filtroForm" class="row g-3 g-lg-4 align-items-end d-flex justify-content-center">
+
+                <div class="col-md-3 col-sm-6">
+                    <label class="form-label small fw-bold">Establecimiento</label>
+                    <select id="filtroEstablecimiento" class="form-select">
+                        <option value="">Todos los establecimientos</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <label class="form-label small fw-bold">Vendedor</label>
+                    <select id="filtroVendedor" class="form-select">
+                        <option value="">Todos los vendedores</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <label class="form-label small fw-bold">Fecha</label>
+                    <input type="date" id="filtroFecha" class="form-control">
+                </div>
+
+                <div class="col-md-3 col-sm-12 text-center text-md-start">
+                    <button type="button" id="btnLimpiar" class="btn btn-secondary border-0 text-white w-100 mb-2">
+                        <i class="bi bi-arrow-clockwise me-2"></i>Limpiar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div class="table-responsive mt-5">
         <table class="table table-bordered text-center">
             <thead class="table-dark">
@@ -28,31 +60,182 @@
                     <th>Información</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tablaCompras">
                 {% if compras %}
-                    {% for compra in compras %}
-                    <tr>
-                        <td>{{ compra.fechaCompra.strftime('%Y-%m-%d') }}</td>
-                        <td>{{ compra.fechaCompra.strftime('%H:%M') }}</td>
-                        <td>{{ compra.establecimiento if compra.establecimiento else '---' }}</td>
-                        <td>{{ compra.vendedor if compra.vendedor else '---' }}</td>
-                        <td>S/ {{ "%.2f"|format(compra.total) }}</td>
-                        <td>
-                            <a href="/detalle/registro/{{ compra.idCompra }}" class="btn btn-info btn-sm rounded text-white">
-                                Ver <i class="bi bi-eye mx-2"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    {% endfor %}
+                {% for compra in compras %}
+                <tr>
+                    <td>{{ compra.fechaCompra.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ compra.fechaCompra.strftime('%H:%M') }}</td>
+                    <td>{{ compra.establecimiento if compra.establecimiento else '---' }}</td>
+                    <td>{{ compra.vendedor if compra.vendedor else '---' }}</td>
+                    <td>S/ {{ "%.2f"|format(compra.total) }}</td>
+                    <td>
+                        <a href="/detalle/registro/{{ compra.idCompra }}"
+                            class="btn btn-info btn-sm rounded text-white">
+                            Ver <i class="bi bi-eye mx-2"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
                 {% else %}
-                    <tr>
-                        <td colspan="6" class="text-center text-muted">No hay registros de compras</td>
-                    </tr>
+                <tr>
+                    <td colspan="6" class="text-center text-muted">No hay registros de compras</td>
+                </tr>
                 {% endif %}
             </tbody>
         </table>
     </div>
 
+    <div id="noResultados" class="text-center mt-4" style="display: none;">
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle me-2"></i>
+            No se encontraron compras que coincidan con los filtros aplicados
+        </div>
+    </div>
+
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const tabla = document.getElementById('tablaCompras');
+        const filtroEstablecimiento = document.getElementById('filtroEstablecimiento');
+        const filtroVendedor = document.getElementById('filtroVendedor');
+        const filtroFecha = document.getElementById('filtroFecha');
+        const btnLimpiar = document.getElementById('btnLimpiar');
+        const noResultados = document.getElementById('noResultados');
+        const resumenFiltros = document.getElementById('resumenFiltros');
+        const totalCompras = document.getElementById('totalCompras');
+        const sumaTotal = document.getElementById('sumaTotal');
+
+        const filasOriginales = Array.from(tabla.querySelectorAll('tr'));
+
+        function llenarSelects() {
+            const establecimientos = new Set();
+            const vendedores = new Set();
+
+            filasOriginales.forEach(fila => {
+                const celdas = fila.querySelectorAll('td');
+                if (celdas.length > 0 && !celdas[0].getAttribute('colspan')) {
+                    const establecimiento = celdas[2].textContent.trim();
+                    const vendedor = celdas[3].textContent.trim();
+
+                    if (establecimiento && establecimiento !== '---') {
+                        establecimientos.add(establecimiento);
+                    }
+                    if (vendedor && vendedor !== '---') {
+                        vendedores.add(vendedor);
+                    }
+                }
+            });
+
+            const establecimientosOrdenados = Array.from(establecimientos).sort();
+            const vendedoresOrdenados = Array.from(vendedores).sort();
+
+            establecimientosOrdenados.forEach(establecimiento => {
+                const option = document.createElement('option');
+                option.value = establecimiento;
+                option.textContent = establecimiento;
+                filtroEstablecimiento.appendChild(option);
+            });
+
+            vendedoresOrdenados.forEach(vendedor => {
+                const option = document.createElement('option');
+                option.value = vendedor;
+                option.textContent = vendedor;
+                filtroVendedor.appendChild(option);
+            });
+        }
+
+        function aplicarFiltros() {
+            const establecimientoFiltro = filtroEstablecimiento.value;
+            const vendedorFiltro = filtroVendedor.value;
+            const fechaFiltro = filtroFecha.value;
+
+            let filasVisibles = 0;
+            let sumaVisibles = 0;
+
+            filasOriginales.forEach(fila => {
+                const celdas = fila.querySelectorAll('td');
+
+                if (celdas.length === 0 || celdas[0].getAttribute('colspan')) {
+                    fila.style.display = 'none';
+                    return;
+                }
+
+                let mostrar = true;
+
+                if (establecimientoFiltro) {
+                    const establecimiento = celdas[2].textContent.trim();
+                    if (establecimiento !== establecimientoFiltro) {
+                        mostrar = false;
+                    }
+                }
+
+                if (vendedorFiltro) {
+                    const vendedor = celdas[3].textContent.trim();
+                    if (vendedor !== vendedorFiltro) {
+                        mostrar = false;
+                    }
+                }
+
+                if (fechaFiltro) {
+                    const fechaCompra = celdas[0].textContent.trim();
+                    if (fechaCompra !== fechaFiltro) {
+                        mostrar = false;
+                    }
+                }
+
+                if (mostrar) {
+                    fila.style.display = '';
+                    filasVisibles++;
+
+                    const totalTexto = celdas[4].textContent.trim();
+                    const totalNumero = parseFloat(totalTexto.replace('S/ ', ''));
+                    if (!isNaN(totalNumero)) {
+                        sumaVisibles += totalNumero;
+                    }
+                } else {
+                    fila.style.display = 'none';
+                }
+            });
+
+            if (filasVisibles === 0) {
+                noResultados.style.display = 'block';
+                resumenFiltros.style.display = 'none';
+            } else {
+                noResultados.style.display = 'none';
+
+                if (establecimientoFiltro || vendedorFiltro || fechaFiltro) {
+                    resumenFiltros.style.display = 'block';
+                    totalCompras.textContent = filasVisibles;
+                    sumaTotal.textContent = sumaVisibles.toFixed(2);
+                } else {
+                    resumenFiltros.style.display = 'none';
+                }
+            }
+        }
+
+        function limpiarFiltros() {
+            filtroEstablecimiento.value = '';
+            filtroVendedor.value = '';
+            filtroFecha.value = '';
+
+            filasOriginales.forEach(fila => {
+                fila.style.display = '';
+            });
+
+            noResultados.style.display = 'none';
+            resumenFiltros.style.display = 'none';
+        }
+
+        filtroEstablecimiento.addEventListener('change', aplicarFiltros);
+        filtroVendedor.addEventListener('change', aplicarFiltros);
+        filtroFecha.addEventListener('change', aplicarFiltros);
+        btnLimpiar.addEventListener('click', limpiarFiltros);
+
+        llenarSelects();
+        limpiarFiltros();
+    });
+</script>
 
 {% endblock %}

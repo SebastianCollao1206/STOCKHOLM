@@ -11,21 +11,31 @@
 
     <div class="card shadow-sm mb-5 mt-lg-0 mt-4">
         <div class="card-body">
-            <form method="GET" action="#" class="row g-3 g-lg-5 align-items-end d-flex justify-content-center">
+            <form id="filtroForm" class="row g-3 g-lg-5 align-items-end d-flex justify-content-center">
 
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-3 col-sm-6">
                     <label class="form-label small fw-bold">Nombre</label>
-                    <input type="text" name="nombre" class="form-control" placeholder="Buscar por nombre">
+                    <input type="text" id="filtroNombre" class="form-control" placeholder="Buscar por nombre">
                 </div>
 
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-3 col-sm-6">
                     <label class="form-label small fw-bold">Fecha de vencimiento</label>
-                    <input type="date" name="fecha" class="form-control">
+                    <input type="date" id="filtroFecha" class="form-control">
                 </div>
 
-                <div class="col-md-4 col-sm-12 text-center text-md-start">
-                    <button type="submit" class="btn btn-danger border-0 btn-filtrar text-white w-100">
-                        <i class="bi bi-search me-2"></i>Filtrar
+                <div class="col-md-3 col-sm-6">
+                    <label class="form-label small fw-bold">Cantidad</label>
+                    <select id="filtroCantidad" class="form-select">
+                        <option value="">Todas las cantidades</option>
+                        <option value="bajo">Bajo stock (≤ 10)</option>
+                        <option value="medio">Stock medio (11-50)</option>
+                        <option value="alto">Stock alto (> 50)</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3 col-sm-12 text-center text-md-start">
+                    <button type="button" id="btnLimpiar" class="btn btn-secondary border-0 text-white w-100">
+                        <i class="bi bi-arrow-clockwise me-2"></i>Limpiar
                     </button>
                 </div>
             </form>
@@ -41,7 +51,7 @@
                     <th>Cantidad</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tablaInventario">
                 {% if inventario %}
                 {% for item in inventario %}
                 <tr>
@@ -59,6 +69,113 @@
         </table>
     </div>
 
+    <div id="noResultados" class="text-center mt-4" style="display: none;">
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle me-2"></i>
+            No se encontraron productos que coincidan con los filtros aplicados
+        </div>
+    </div>
+
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const tabla = document.getElementById('tablaInventario');
+        const filtroNombre = document.getElementById('filtroNombre');
+        const filtroFecha = document.getElementById('filtroFecha');
+        const filtroCantidad = document.getElementById('filtroCantidad');
+        const btnFiltrar = document.getElementById('btnFiltrar');
+        const noResultados = document.getElementById('noResultados');
+        const btnLimpiar = document.getElementById('btnLimpiar');
+
+        const filasOriginales = Array.from(tabla.querySelectorAll('tr'));
+
+        function aplicarFiltros() {
+            const nombreFiltro = filtroNombre.value.toLowerCase().trim();
+            const fechaFiltro = filtroFecha.value;
+            const cantidadFiltro = filtroCantidad.value;
+
+            let filasVisibles = 0;
+
+            filasOriginales.forEach(fila => {
+                const celdas = fila.querySelectorAll('td');
+
+                if (celdas.length === 0) {
+                    fila.style.display = 'none';
+                    return;
+                }
+
+                if (celdas[0].getAttribute('colspan')) {
+                    fila.style.display = 'none';
+                    return;
+                }
+
+                let mostrar = true;
+
+                if (nombreFiltro) {
+                    const nombre = celdas[0].textContent.toLowerCase();
+                    if (!nombre.includes(nombreFiltro)) {
+                        mostrar = false;
+                    }
+                }
+
+                if (fechaFiltro) {
+                    const fechaProducto = celdas[1].textContent.trim();
+                    if (fechaProducto === 'N/A' || fechaProducto !== fechaFiltro) {
+                        mostrar = false;
+                    }
+                }
+
+                if (cantidadFiltro) {
+                    const cantidad = parseInt(celdas[2].textContent);
+                    switch (cantidadFiltro) {
+                        case 'bajo':
+                            if (cantidad > 10) mostrar = false;
+                            break;
+                        case 'medio':
+                            if (cantidad < 11 || cantidad > 50) mostrar = false;
+                            break;
+                        case 'alto':
+                            if (cantidad <= 50) mostrar = false;
+                            break;
+                    }
+                }
+
+                if (mostrar) {
+                    fila.style.display = '';
+                    filasVisibles++;
+                } else {
+                    fila.style.display = 'none';
+                }
+            });
+
+            if (filasVisibles === 0) {
+                noResultados.style.display = 'block';
+            } else {
+                noResultados.style.display = 'none';
+            }
+        }
+
+        function limpiarFiltros() {
+            filtroNombre.value = '';
+            filtroFecha.value = '';
+            filtroCantidad.value = '';
+
+            filasOriginales.forEach(fila => {
+                fila.style.display = '';
+            });
+
+            noResultados.style.display = 'none';
+        }
+
+        btnLimpiar.addEventListener('click', limpiarFiltros);
+
+        filtroNombre.addEventListener('input', aplicarFiltros);
+        filtroFecha.addEventListener('change', aplicarFiltros);
+        filtroCantidad.addEventListener('change', aplicarFiltros);
+
+        limpiarFiltros();
+    });
+</script>
 
 {% endblock %}
