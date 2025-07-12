@@ -138,3 +138,19 @@ class ServicioCompra:
                 'message': f'Error al listar usuario productos: {str(e)}',
                 'usuario_productos': []
             }
+            
+    @staticmethod
+    def listar_detalle_compra(id_compra):
+        try:
+            detalles = CompraDAO.listar_detalle_compra(id_compra)
+            return {
+                'success': True,
+                'detalles': detalles
+            }
+        except Exception as e:
+            return {
+                'success': False,
+                'message': f'Error al listar detalle de compra: {str(e)}',
+                'detalles': []
+            }
+    

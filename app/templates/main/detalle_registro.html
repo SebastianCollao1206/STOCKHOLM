@@ -17,6 +17,12 @@
         </div>
     </div>
 
+    {% if error %}
+    <div class="alert alert-danger mt-3" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
+
     <div class="table-responsive mt-5">
         <table class="table table-bordered text-center">
             <thead class="table-dark">
@@ -32,44 +38,32 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Arroz Extra</td>
-                    <td>
-                        <button class="btn btn-info btn-sm rounded text-white" data-bs-toggle="modal"
-                            data-bs-target="#infoModal"
-                            onclick="setModalContent('Arroz Extra', 'Arroz de grano largo, ideal para el consumo diario.')">
-                            <i class="bi bi-eye me-1"></i>Ver
-                        </button>
-                    </td>
-                    <td>
-                        <img src="https://corporacionliderperu.com/50720-large_default/gloria-leche-tarro-azul-gde-x-390-gr.jpg"
-                            alt="Producto" class="img-fluid rounded" style="width: 50px;">
-                    </td>
-                    <td>2025-12-31</td>
-                    <td>10</td>
-                    <td>5%</td>
-                    <td>S/ 3.00</td>
-                    <td>S/ 28.50</td>
-                </tr>
-                <tr>
-                    <td>Leche Gloria</td>
-                    <td>
-                        <button class="btn btn-info btn-sm rounded text-white" data-bs-toggle="modal"
-                            data-bs-target="#infoModal"
-                            onclick="setModalContent('Leche Gloria', 'Lata de leche evaporada, entera, marca Gloria.')">
-                            <i class="bi bi-eye me-1"></i>Ver
-                        </button>
-                    </td>
-                    <td>
-                        <img src="https://corporacionliderperu.com/50720-large_default/gloria-leche-tarro-azul-gde-x-390-gr.jpg"
-                            alt="Producto" class="img-fluid rounded" style="width: 50px;">
-                    </td>
-                    <td>2026-01-15</td>
-                    <td>6</td>
-                    <td>0%</td>
-                    <td>S/ 4.20</td>
-                    <td>S/ 25.20</td>
-                </tr>
+                {% if detalles %}
+                    {% for detalle in detalles %}
+                    <tr>
+                        <td>{{ detalle.producto }} - {{ detalle.descripcion }}</td>
+                        <td>
+                            <button class="btn btn-info btn-sm rounded text-white" data-bs-toggle="modal"
+                                data-bs-target="#infoModal"
+                                onclick="setModalContent('{{ detalle.producto }}', '{{ detalle.descripcion }}', '{{ detalle.imagen }}', '{{ detalle.categoria }}', '{{ detalle.marca }}', '{{ detalle.valoracion_producto }}', '{{ detalle.precio_compra }}')">
+                                <i class="bi bi-eye me-1"></i>Ver
+                            </button>
+                        </td>
+                        <td>
+                            <img src="{{ detalle.imagen }}" alt="Producto" class="img-fluid rounded" style="width: 50px;">
+                        </td>
+                        <td>{{ detalle.fecha_vencimiento.strftime('%Y-%m-%d') if detalle.fecha_vencimiento else 'No especificada' }}</td>
+                        <td>{{ detalle.cantidad }}</td>
+                        <td>{{ detalle.descuento }}%</td>
+                        <td>S/ {{ "%.2f"|format(detalle.precio_compra) }}</td>
+                        <td>S/ {{ "%.2f"|format(detalle.subtotal) }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="8" class="text-center">No hay detalles disponibles</td>
+                    </tr>
+                {% endif %}
             </tbody>
         </table>
     </div>
@@ -80,32 +74,30 @@
             <div class="modal-content rounded-4">
 
                 <div class="modal-header align-items-center">
-                    <img src="https://corporacionliderperu.com/50720-large_default/gloria-leche-tarro-azul-gde-x-390-gr.jpg"
-                        alt="Producto" id="modalProductImage" style="width: 50px; height: auto;" class="rounded">
-                    <h5 class="modal-title fw-semibold ms-3" id="infoModalLabel">Leche - deslactosada</h5>
+                    <img src="" alt="Producto" id="modalProductImage" style="width: 50px; height: auto;" class="rounded">
+                    <h5 class="modal-title fw-semibold ms-3" id="infoModalLabel">Producto</h5>
                     <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal"
                         aria-label="Cerrar"></button>
                 </div>
-
 
                 <div class="modal-body">
                     <table class="table table-sm table-borderless">
                         <tbody>
                             <tr>
                                 <th scope="row">Categoria:</th>
-                                <td id="modalMarca">Lácteos</td>
+                                <td id="modalCategoria">-</td>
                             </tr>
                             <tr>
                                 <th scope="row">Marca:</th>
-                                <td id="modalMarca">Gloria</td>
+                                <td id="modalMarca">-</td>
                             </tr>
                             <tr>
                                 <th scope="row">Valoración:</th>
-                                <td id="modalValoracion">4.5 / 10</td>
+                                <td id="modalValoracion">-</td>
                             </tr>
                             <tr>
                                 <th scope="row">Precio:</th>
-                                <td id="modalPrecio">S/ 4.20</td>
+                                <td id="modalPrecio">-</td>
                             </tr>
                         </tbody>
                     </table>
@@ -119,5 +111,16 @@
     </div>
 
 </div>
+
+<script>
+function setModalContent(producto, descripcion, imagen, categoria, marca, valoracion, precio) {
+    document.getElementById('infoModalLabel').textContent = producto + ' - ' + descripcion;
+    document.getElementById('modalProductImage').src = imagen;
+    document.getElementById('modalCategoria').textContent = categoria;
+    document.getElementById('modalMarca').textContent = marca;
+    document.getElementById('modalValoracion').textContent = valoracion + ' / 10';
+    document.getElementById('modalPrecio').textContent = 'S/ ' + parseFloat(precio).toFixed(2);
+}
+</script>
 
 {% endblock %}

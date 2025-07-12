@@ -185,3 +185,30 @@ class CompraDAO:
             return usuario_productos
         except Exception as e:
             raise Exception(f"Error al listar usuario productos de usuario: {str(e)}")
+        
+    
+    @staticmethod
+    def listar_detalle_compra(id_compra):
+        try:
+            query = text("CALL usp_listarDetalleDeCompra(:p_idCompra)")
+            result = db.session.execute(query, {'p_idCompra': id_compra})
+            
+            detalles = []
+            for row in result:
+                detalles.append({
+                    'producto': row[0],
+                    'descripcion': row[1],
+                    'imagen': row[2],
+                    'fecha_vencimiento': row[3],
+                    'cantidad': row[4],
+                    'precio_compra': row[5],
+                    'subtotal': row[6],
+                    'descuento': row[7],
+                    'categoria': row[8],
+                    'marca': row[9],
+                    'valoracion_producto': row[10]
+                })
+            
+            return detalles
+        except Exception as e:
+            raise Exception(f"Error al listar detalle de compra: {str(e)}")

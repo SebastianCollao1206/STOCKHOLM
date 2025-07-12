@@ -206,14 +206,36 @@ def registros():
     except Exception as e:
         return render_template('main/registros.html', compras=[], error=f"Error al cargar registros: {str(e)}")
 
+# @main_bp.route('/detalle/registro/<int:id>', methods=['GET', 'POST'])
+# @login_required
+# def detalle_registro(id):
+#     try:              
+#         return render_template('main/detalle_registro.html')  
+#     except Exception as e:
+#         print(f"Error: {str(e)}")
+#         return render_template('main/detalle_registro.html')
 @main_bp.route('/detalle/registro/<int:id>', methods=['GET', 'POST'])
 @login_required
 def detalle_registro(id):
-    try:              
-        return render_template('main/detalle_registro.html')  
+    try:
+        id_usuario = session.get('user_id')
+        
+        if not id_usuario:
+            return render_template('main/detalle_registro.html', detalles=[], error="Usuario no autenticado")
+        
+        resultado = ServicioCompra.listar_detalle_compra(id)
+        
+        if resultado['success']:
+            detalles = resultado['detalles']
+        else:
+            detalles = []
+            
+        return render_template('main/detalle_registro.html', detalles=detalles)
+        
     except Exception as e:
         print(f"Error: {str(e)}")
-        return render_template('main/detalle_registro.html')
+        return render_template('main/detalle_registro.html', detalles=[], error=f"Error al cargar detalle: {str(e)}")
+
     
 @main_bp.route('/registro/agregar')
 @login_required
