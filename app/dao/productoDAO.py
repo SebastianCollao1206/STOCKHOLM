@@ -154,10 +154,11 @@ class ProductoDAO:
             inventario = []
             for row in result:
                 inventario.append({
-                    'nombre_producto': row[0],
-                    'descripcion': row[1],
-                    'fecha_vencimiento': row[2],
-                    'stock': row[3]
+                    'idUsuarioProducto': row[0],
+                    'nombre_producto': row[1],
+                    'descripcion': row[2],
+                    'fecha_vencimiento': row[3],
+                    'stock': row[4]
                 })
             
             return inventario
@@ -187,3 +188,40 @@ class ProductoDAO:
             
         except Exception as e:
             raise Exception(f"Error al listar productos comprados por usuario: {str(e)}")
+        
+    
+    @staticmethod
+    def actualizar_usuario_producto(id_usuario_producto, id_usuario=None, id_producto=None, stock=None):
+        try:
+            query = text("CALL usp_actualizarUsuarioProducto(:p_idUsuarioProducto, :p_idUsuario, :p_idProducto, :p_stock)")
+            db.session.execute(query, {
+                'p_idUsuarioProducto': id_usuario_producto,
+                'p_idUsuario': id_usuario,
+                'p_idProducto': id_producto,
+                'p_stock': stock
+            })
+            db.session.commit()
+            return True
+            
+        except Exception as e:
+            db.session.rollback()
+            raise Exception(f"Error al actualizar usuario producto: {str(e)}")
+    
+    @staticmethod
+    def obtener_usuario_producto_por_id(id_usuario_producto):
+        try:
+            query = text("CALL usp_obtenerInfoDeUsuarioProductoPorId(:p_idUsuarioProducto)")
+            result = db.session.execute(query, {'p_idUsuarioProducto': id_usuario_producto})
+            row = result.fetchone()
+            
+            if row:
+                return {
+                    'idUsuarioProducto': row[0],
+                    'idUsuario': row[1],
+                    'idProducto': row[2],
+                    'stock': row[3] 
+                }
+            return None
+            
+        except Exception as e:
+            raise Exception(f"Error al obtener usuario producto: {str(e)}")

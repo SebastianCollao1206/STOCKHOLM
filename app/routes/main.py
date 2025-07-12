@@ -262,7 +262,7 @@ def marca_agregar():
         Notificacion.error('Error interno del servidor')
         return render_template('main/agregar_marca.html')
 
-# #INVENTARIO
+#INVENTARIO
 @main_bp.route('/inventario')
 @login_required
 def inventario():
@@ -285,6 +285,52 @@ def inventario():
         print(f"Error: {str(e)}")
         return render_template('main/inventario.html', inventario=[], error=f"Error al cargar inventario: {str(e)}")
 
+# EDITAR INVENTARIO
+@main_bp.route('/inventario/editar/<int:id_usuario_producto>', methods=['GET', 'POST'])
+@login_required
+def editar_inventario(id_usuario_producto):
+    try:
+        if request.method == 'POST':
+            nuevo_stock = request.form.get('stock')
+            
+            if not nuevo_stock:
+                Notificacion.error("El stock es requerido")
+                producto_info = ServicioProducto.obtener_usuario_producto(id_usuario_producto)
+                return render_template('main/editar_inventario.html', 
+                                     producto=producto_info['producto'] if producto_info['success'] else None)
+            
+            try:
+                nuevo_stock = float(nuevo_stock)
+            except ValueError:
+                Notificacion.error("El stock debe ser un número válido")
+                producto_info = ServicioProducto.obtener_usuario_producto(id_usuario_producto)
+                return render_template('main/editar_inventario.html', 
+                                     producto=producto_info['producto'] if producto_info['success'] else None)
+            
+            resultado = ServicioProducto.actualizar_stock_producto(id_usuario_producto, nuevo_stock)
+            
+            if resultado['success']:
+                Notificacion.success(resultado['message'])
+                return redirect(url_for('main.inventario'))
+            else:
+                Notificacion.error(resultado['message'])
+                producto_info = ServicioProducto.obtener_usuario_producto(id_usuario_producto)
+                return render_template('main/editar_inventario.html', 
+                                     producto=producto_info['producto'] if producto_info['success'] else None)
+        
+        resultado = ServicioProducto.obtener_usuario_producto(id_usuario_producto)
+        
+        if resultado['success']:
+            return render_template('main/editar_inventario.html', 
+                                 producto=resultado['producto'])
+        else:
+            Notificacion.error(resultado['message'])
+            return redirect(url_for('main.inventario'))
+            
+    except Exception as e:
+        Notificacion.error(f"Error al procesar solicitud: {str(e)}")
+        return redirect(url_for('main.inventario'))
+    
 #PRODUCTOS
 @main_bp.route('/productos')
 @login_required

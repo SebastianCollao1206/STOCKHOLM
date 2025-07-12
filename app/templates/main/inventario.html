@@ -49,6 +49,7 @@
                     <th>Nombre</th>
                     <th>Fecha de vencimiento</th>
                     <th>Cantidad</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody id="tablaInventario">
@@ -57,12 +58,18 @@
                 <tr>
                     <td>{{ item.nombre_producto }} - {{ item.descripcion }}</td>
                     <td>{{ item.fecha_vencimiento if item.fecha_vencimiento else 'N/A' }}</td>
-                    <td>{{ item.stock }}</td>
+                    <td>{{ item.stock | int }}</td>
+                    <td>
+                        <a href="/inventario/editar/{{ item.idUsuarioProducto }}"
+                            class="btn btn-warning btn-sm text-white">
+                            <i class="bi bi-pencil me-1"></i>Actualizar
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
                 {% else %}
                 <tr>
-                    <td colspan="3" class="text-center">No hay productos en el inventario</td>
+                    <td colspan="4" class="text-center">No hay productos en el inventario</td>
                 </tr>
                 {% endif %}
             </tbody>

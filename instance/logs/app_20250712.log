@@ -200,3 +200,32 @@
 2025-07-12 14:51:38,327 - notifications - INFO - Alerta obtenida: {'message': '¡Bienvenido de vuelta!', 'title': 'Hola Sebastian', 'type': 'success'}
 2025-07-12 14:56:34,370 - app - INFO - Sistema de logging configurado correctamente
 2025-07-12 14:56:38,333 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 16:20:16,128 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 16:25:49,135 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 16:26:33,198 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 16:28:00,305 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 16:28:16,682 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 16:34:33,203 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 16:34:46,477 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 16:45:14,385 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 16:45:29,322 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 16:46:33,349 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 16:46:52,486 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 16:47:14,643 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 16:49:01,859 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 16:50:04,703 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 16:50:38,037 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 16:51:18,243 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 17:01:23,986 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 17:09:01,422 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 17:11:34,796 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 17:13:05,781 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 17:16:58,653 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 17:17:23,008 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 17:17:46,986 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 17:24:23,243 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 17:29:29,560 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 17:30:17,264 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 17:30:51,309 - notifications - INFO - Alerta de éxito: ¡Éxito! - Stock actualizado exitosamente
+2025-07-12 17:30:51,310 - notifications - INFO - Alerta establecida: {'message': 'Stock actualizado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 17:30:51,327 - notifications - INFO - Alerta obtenida: {'message': 'Stock actualizado exitosamente', 'title': '¡Éxito!', 'type': 'success'}

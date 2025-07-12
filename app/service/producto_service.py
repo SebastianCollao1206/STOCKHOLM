@@ -206,3 +206,69 @@ class ServicioProducto:
                 'message': str(e),
                 'productos': []
             }
+    
+    @staticmethod
+    def actualizar_stock_producto(id_usuario_producto, nuevo_stock):
+        try:
+            producto_actual = ProductoDAO.obtener_usuario_producto_por_id(id_usuario_producto)
+            if not producto_actual:
+                return {
+                    'success': False,
+                    'message': 'Producto no encontrado'
+                }
+            
+            if nuevo_stock < 0:
+                return {
+                    'success': False,
+                    'message': 'El stock no puede ser negativo'
+                }
+            
+            if nuevo_stock > producto_actual['stock']:
+                return {
+                    'success': False,
+                    'message': 'El nuevo stock no puede ser mayor al stock actual'
+                }
+            
+            resultado = ProductoDAO.actualizar_usuario_producto(
+                id_usuario_producto=id_usuario_producto,
+                stock=nuevo_stock
+            )
+            
+            if resultado:
+                return {
+                    'success': True,
+                    'message': 'Stock actualizado exitosamente'
+                }
+            else:
+                return {
+                    'success': False,
+                    'message': 'Error al actualizar el stock'
+                }
+                
+        except Exception as e:
+            return {
+                'success': False,
+                'message': str(e)
+            }
+            
+    @staticmethod
+    def obtener_usuario_producto(id_usuario_producto):
+        try:
+            usuario_producto = ProductoDAO.obtener_usuario_producto_por_id(id_usuario_producto)
+            
+            if not usuario_producto:
+                return {
+                    'success': False,
+                    'message': 'Producto no encontrado'
+                }
+            
+            return {
+                'success': True,
+                'producto': usuario_producto
+            }
+            
+        except Exception as e:
+            return {
+                'success': False,
+                'message': str(e)
+            }
