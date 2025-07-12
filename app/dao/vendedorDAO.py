@@ -38,7 +38,7 @@ class VendedorDAO:
     @staticmethod
     def listar_vendedores_por_usuario(id_usuario):
         try:
-            query = text("CALL listarVendedoresDeUsuario(:p_idUsuario)")
+            query = text("CALL usp_listarVendedoresDeUsuario(:p_idUsuario)")
             result = db.session.execute(query, {'p_idUsuario': id_usuario})
             
             vendedores = []

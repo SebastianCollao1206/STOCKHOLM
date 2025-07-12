@@ -7,6 +7,7 @@ from app.service.marca_service import ServicioMarca
 from app.service.categoria_service import ServicioCategoria
 from app.service.producto_service import ServicioProducto
 from app.service.registro_temporal_service import ServicioRegistroTemporal
+from app.service.compra_service import ServicioCompra
 
 main_bp = Blueprint('main', __name__)
 
@@ -209,21 +210,95 @@ def registro_agregar():
         
         result_registro = ServicioRegistroTemporal.listar_productos_del_registro()
         registro_productos = result_registro['productos'] if result_registro['success'] else []
+
+        result_vendedores = ServicioVendedor.listar_vendedores_usuario(user_id)
+        if not result_vendedores['success']:
+            Notificacion.error('Error al cargar los vendedores')
+            vendedores = []
+        else:
+            vendedores = result_vendedores['vendedores']
+
         
+        result_establecimientos = ServicioEstablecimiento.listar_establecimientos_usuario(user_id)
+        if not result_establecimientos['success']:
+            Notificacion.error('Error al cargar los establecimientos')
+            establecimientos = []
+        else:
+            establecimientos = result_establecimientos['establecimientos']
+
         return render_template(
             'main/agregar_registro.html',  
             registro_productos=registro_productos,
             total_items=result_registro.get('total_items', 0),
-            total_general=result_registro.get('total_general', 0)
+            total_general=result_registro.get('total_general', 0),
+            vendedores=vendedores,
+            establecimientos=establecimientos
         )
         
     except Exception as e:
-        print(f"Error en detalle_registro: {str(e)}")
+        print(f"Error en registro_agregar: {str(e)}")
         Notificacion.error('Error interno del servidor')
         return render_template('main/agregar_registro.html', 
                              registro_productos=[], 
                              total_items=0, 
-                             total_general=0)
+                             total_general=0,
+                             vendedores=[],
+                             establecimientos=[])
+
+#COMPRA       
+@main_bp.route('/compra/guardar', methods=['POST'])
+@login_required
+def guardar_compra():
+    try:
+        user_id = session.get('user_id')
+        if not user_id:
+            Notificacion.error('Error de sesión')
+            return redirect(url_for('auth.login'))
+        
+        fecha = request.form.get('fecha')
+        vendedor_id = request.form.get('vendedor')
+        establecimiento_id = request.form.get('establecimiento')
+        
+        if vendedor_id and establecimiento_id:
+            Notificacion.error('Solo puedes seleccionar vendedor o establecimiento, no ambos')
+            return redirect(url_for('main.registro_agregar'))
+        
+        if not vendedor_id and not establecimiento_id:
+            Notificacion.error('Debes seleccionar un vendedor o establecimiento')
+            return redirect(url_for('main.registro_agregar'))
+        
+        if not fecha:
+            Notificacion.error('La fecha es obligatoria')
+            return redirect(url_for('main.registro_agregar'))
+        
+        result_registro = ServicioRegistroTemporal.listar_productos_del_registro()
+        if not result_registro['success'] or not result_registro['productos']:
+            Notificacion.error('No hay productos en el registro')
+            return redirect(url_for('main.registro_agregar'))
+        
+        vendedor_id = int(vendedor_id) if vendedor_id else None
+        establecimiento_id = int(establecimiento_id) if establecimiento_id else None
+        
+        result = ServicioCompra.guardar_compra(
+            id_usuario=user_id,
+            vendedor_id=vendedor_id,
+            establecimiento_id=establecimiento_id,
+            fecha_compra=fecha,
+            productos_registro=result_registro['productos']
+        )
+        
+        if result['success']:
+            ServicioRegistroTemporal.limpiar_registro()
+            Notificacion.success(result['message'])
+            return redirect(url_for('main.registros'))  
+        else:
+            Notificacion.error(result['message'])
+            return redirect(url_for('main.registro_agregar'))
+        
+    except Exception as e:
+        print(f"Error en guardar_compra: {str(e)}")
+        Notificacion.error('Error interno del servidor')
+        return redirect(url_for('main.registro_agregar'))        
     
 #DETALLE    
 @main_bp.route('/detalle/producto/agregar', methods=['GET', 'POST'])

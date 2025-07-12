@@ -422,3 +422,10 @@
 2025-07-11 23:50:59,642 - notifications - INFO - Alerta de éxito: ¡Éxito! - Marca creada exitosamente
 2025-07-11 23:50:59,643 - notifications - INFO - Alerta establecida: {'message': 'Marca creada exitosamente', 'type': 'success', 'title': '¡Éxito!'}
 2025-07-11 23:50:59,664 - notifications - INFO - Alerta obtenida: {'message': 'Marca creada exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-11 23:55:14,750 - app - INFO - Sistema de logging configurado correctamente
+2025-07-11 23:56:46,847 - notifications - ERROR - Alerta de error: ¡Error! - Ya tienes otro establecimiento con ese nombre
+2025-07-11 23:56:46,848 - notifications - INFO - Alerta establecida: {'message': 'Ya tienes otro establecimiento con ese nombre', 'type': 'error', 'title': '¡Error!'}
+2025-07-11 23:56:46,850 - notifications - INFO - Alerta obtenida: {'message': 'Ya tienes otro establecimiento con ese nombre', 'type': 'error', 'title': '¡Error!'}
+2025-07-12 00:00:40,131 - notifications - INFO - Alerta de éxito: ¡Éxito! - Producto agregado al registro exitosamente
+2025-07-12 00:00:40,133 - notifications - INFO - Alerta establecida: {'message': 'Producto agregado al registro exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 00:00:40,154 - notifications - INFO - Alerta obtenida: {'message': 'Producto agregado al registro exitosamente', 'title': '¡Éxito!', 'type': 'success'}

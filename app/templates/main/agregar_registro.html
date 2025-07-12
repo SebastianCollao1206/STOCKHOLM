@@ -75,55 +75,93 @@
         </table>
     </div>
 
-    <div class="row mt-5 mb-4 d-flex justify-content-center align-items-center gap-4">
-        <div class="col-md-3">
-            <label for="fecha" class="form-label fw-medium">Fecha</label>
-            <input type="date" id="fecha" name="fecha" class="form-control" required>
-        </div>
-
-        <div class="col-md-3">
-            <label for="vendedor" class="form-label fw-medium">Vendedor</label>
-            <select id="vendedor" name="vendedor" class="form-select" required>
-                <option disabled selected value="">Selecciona un establecimiento</option>
-                <option value="1">Juna</option>
-                <option value="2">Jaime</option>
-            </select>
-            <div class="mt-2">
-                <small class="text-muted">¿No lo encuentras?
-                    <a href="/vendedor/agregar" class="text-primary text-decoration-none">Agrégalo aquí</a>
-                </small>
+    <form method="POST" action="{{ url_for('main.guardar_compra') }}">
+        <div class="row mt-5 mb-4 d-flex justify-content-center align-items-center gap-4">
+            <div class="col-md-3">
+                <label for="fecha" class="form-label fw-medium">Fecha</label>
+                <input type="date" id="fecha" name="fecha" class="form-control" required>
             </div>
-        </div>
 
-        <div class="col-md-3">
-            <label for="establecimiento" class="form-label fw-medium">Establecimiento</label>
-            <select id="establecimiento" name="establecimiento" class="form-select" required>
-                <option disabled selected value="">Selecciona un establecimiento</option>
-                <option value="1">Supermercado MiVeci</option>
-                <option value="2">Tienda El Ahorro</option>
-            </select>
-            <div class="mt-2">
-                <small class="text-muted">¿No lo encuentras?
-                    <a href="/establecimiento/agregar" class="text-primary text-decoration-none">Agrégalo aquí</a>
-                </small>
+            <div class="col-md-3">
+                <label for="vendedor" class="form-label fw-medium">Vendedor</label>
+                <select id="vendedor" name="vendedor" class="form-select">
+                    <option disabled selected value="">Selecciona un vendedor</option>
+                    {% for vendedor in vendedores %}
+                    <option value="{{ vendedor.idVendedor }}">{{ vendedor.vendedor }}</option>
+                    {% endfor %}
+                </select>
+                <div class="mt-2">
+                    <small class="text-muted">¿No lo encuentras?
+                        <a href="/vendedor/agregar" class="text-primary text-decoration-none">Agrégalo aquí</a>
+                    </small>
+                </div>
             </div>
-        </div>
 
-        <div class="col-md-2 d-flex align-items-center justify-content-center">
-            <form method="POST" action="{{ url_for('main.detalle_registro_limpiar') }}" style="display: inline;"
-                onsubmit="return confirm('¿Estás seguro de limpiar todo el registro?')">
-                <button type="submit" class="btn btn-danger btn-agregar border-0 text-white">
+            <div class="col-md-3">
+                <label for="establecimiento" class="form-label fw-medium">Establecimiento</label>
+                <select id="establecimiento" name="establecimiento" class="form-select">
+                    <option disabled selected value="">Selecciona un establecimiento</option>
+                    {% for establecimiento in establecimientos %}
+                    <option value="{{ establecimiento.idEstablecimiento }}">{{ establecimiento.establecimiento }}
+                    </option>
+                    {% endfor %}
+                </select>
+                <div class="mt-2">
+                    <small class="text-muted">¿No lo encuentras?
+                        <a href="/establecimiento/agregar" class="text-primary text-decoration-none">Agrégalo aquí</a>
+                    </small>
+                </div>
+            </div>
+
+            <div class="col-md-2 d-flex align-items-center justify-content-center">
+                <button type="button" class="btn btn-danger btn-agregar border-0 text-white"
+                    onclick="limpiarRegistro()">
                     <i class="bi bi-trash me-2"></i>Limpiar
                 </button>
-            </form>
+            </div>
         </div>
-    </div>
 
-    <div class="d-flex justify-content-center mt-5">
-        <button type="submit" class="btn btn-agregar btn-primary border-0 text-white">
-            <i class="bi bi-plus-circle me-2"></i>Guardar
-        </button>
-    </div>
+        <div class="d-flex justify-content-center mt-5">
+            <button type="submit" class="btn btn-agregar btn-primary border-0 text-white">
+                <i class="bi bi-plus-circle me-2"></i>Guardar
+            </button>
+        </div>
+    </form>
 </div>
+
+<script>
+    function limpiarRegistro() {
+        if (confirm('¿Estás seguro de limpiar todo el registro?')) {
+            // Crear un formulario temporal para la acción de limpiar
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = "{{ url_for('main.detalle_registro_limpiar') }}";
+            document.body.appendChild(form);
+            form.submit();
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        const vendedorSelect = document.getElementById('vendedor');
+        const establecimientoSelect = document.getElementById('establecimiento');
+
+        vendedorSelect.addEventListener('change', function () {
+            if (this.value) {
+                establecimientoSelect.disabled = true;
+                establecimientoSelect.value = '';
+            } else {
+                establecimientoSelect.disabled = false;
+            }
+        });
+
+        establecimientoSelect.addEventListener('change', function () {
+            if (this.value) {
+                vendedorSelect.disabled = true;
+                vendedorSelect.value = '';
+            } else {
+                vendedorSelect.disabled = false;
+            }
+        });
+    });
+</script>
 
 {% endblock %}
