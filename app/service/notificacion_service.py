@@ -52,3 +52,4 @@ class ServicioNotificacion:
                 'success': False,
                 'message': str(e)
             }
+        
