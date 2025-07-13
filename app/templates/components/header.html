@@ -138,40 +138,96 @@
         </div>
         <div class="offcanvas-body cuerpito mt-3">
             <div class="d-flex justify-content-end mb-4">
-                <button class="btn btn-link text-decoration-none">
+                <button class="btn btn-link text-decoration-none" id="marcarTodasLeidas">
                     <i class="bi bi-check"></i> Marcar todas como leídas
                 </button>
             </div>
 
-            <a href="#" class="notification text-decoration-none p-2 mb-3">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h6 class="fw-bold mb-1">
-                        <i class="bi bi-exclamation-circle me-2"></i>Nueva solicitud
-                    </h6>
-                    <span class="badge bg-danger text-white small">Urgente</span>
-                </div>
-                <p class="mt-2">Tienes una nueva solicitud de servicio.</p>
-            </a>
-            <a href="#" class="notification text-decoration-none p-2 mb-3">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h6 class="fw-bold mb-1">
-                        <i class="bi bi-exclamation-circle me-2"></i>Nueva solicitud
-                    </h6>
-                    <span class="badge bg-warning text-dark">Pendiente</span>
-                </div>
-                <p class="mt-2">Tienes una nueva solicitud de servicio.</p>
-            </a>
-            <a href="#" class="notification text-decoration-none p-2 mb-3">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h6 class="fw-bold mb-1">
-                        <i class="bi bi-exclamation-circle me-2"></i>Nueva solicitud
-                    </h6>
-                    <span class="badge bg-success">Resuelto</span>
-                </div>
-                <p class="mt-2">Tienes una nueva solicitud de servicio.</p>
-            </a>
-
+            <div id="notificaciones-container">
+                <!-- Las notificaciones se cargarán aquí via JavaScript -->
+            </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const contadorBadge = document.querySelector('.notificacion');
+            const containerNotificaciones = document.getElementById('notificaciones-container');
+            const btnMarcarTodas = document.getElementById('marcarTodasLeidas');
+
+            actualizarContador();
+
+            document.getElementById('notificationsOffcanvas').addEventListener('show.bs.offcanvas', function () {
+                cargarNotificaciones();
+            });
+
+            btnMarcarTodas.addEventListener('click', function () {
+                fetch('/notificaciones/marcar-leidas', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            actualizarContador();
+                            cargarNotificaciones();
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            });
+
+            function actualizarContador() {
+                fetch('/notificaciones/contador')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.contador > 0) {
+                            contadorBadge.textContent = data.contador;
+                            contadorBadge.style.display = 'block';
+                        } else {
+                            contadorBadge.style.display = 'none';
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+
+            function cargarNotificaciones() {
+                fetch('/notificaciones')
+                    .then(response => response.json())
+                    .then(data => {
+                        containerNotificaciones.innerHTML = '';
+
+                        if (data.length === 0) {
+                            containerNotificaciones.innerHTML = '<p class="text-muted text-center">No tienes notificaciones</p>';
+                            return;
+                        }
+
+                        data.forEach(notificacion => {
+                            const badgeClass = notificacion.tipo === 'Urgente' ? 'bg-danger' :
+                                notificacion.tipo === 'Poco urgente' ? 'bg-warning text-dark' : 'bg-success';
+
+                            const notifElement = document.createElement('div');
+                            notifElement.className = `notification p-2 mb-3 ${notificacion.es_nueva ? 'border-start border-primary border-3' : ''}`;
+                            notifElement.innerHTML = `
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="fw-bold mb-1">
+                                <i class="bi bi-exclamation-circle me-2"></i>${notificacion.titulo}
+                            </h6>
+                            <span class="badge ${badgeClass} text-white small">${notificacion.tipo}</span>
+                        </div>
+                        <p class="mt-2">${notificacion.descripcion}</p>
+                        <small class="text-muted">${notificacion.fechaNoti}</small>
+                    `;
+
+                            containerNotificaciones.appendChild(notifElement);
+                        });
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+
+            setInterval(actualizarContador, 30000);
+        });
+    </script>
 
 </header>

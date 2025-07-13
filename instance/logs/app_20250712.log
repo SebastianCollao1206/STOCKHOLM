@@ -229,3 +229,28 @@
 2025-07-12 17:30:51,309 - notifications - INFO - Alerta de éxito: ¡Éxito! - Stock actualizado exitosamente
 2025-07-12 17:30:51,310 - notifications - INFO - Alerta establecida: {'message': 'Stock actualizado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
 2025-07-12 17:30:51,327 - notifications - INFO - Alerta obtenida: {'message': 'Stock actualizado exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-12 17:31:30,282 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 18:14:59,861 - notifications - INFO - Alerta de éxito: ¡Éxito! - Has cerrado sesión exitosamente
+2025-07-12 18:14:59,863 - notifications - INFO - Alerta establecida: {'message': 'Has cerrado sesión exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 18:14:59,908 - notifications - INFO - Alerta obtenida: {'message': 'Has cerrado sesión exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-12 18:15:07,400 - notifications - INFO - Alerta de éxito: Hola Sebastian - ¡Bienvenido de vuelta!
+2025-07-12 18:15:07,401 - notifications - INFO - Alerta establecida: {'message': '¡Bienvenido de vuelta!', 'type': 'success', 'title': 'Hola Sebastian'}
+2025-07-12 18:15:07,425 - notifications - INFO - Alerta obtenida: {'message': '¡Bienvenido de vuelta!', 'title': 'Hola Sebastian', 'type': 'success'}
+2025-07-12 19:54:26,614 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 19:55:05,034 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 19:56:18,467 - app - INFO - Sistema de logging configurado correctamente
+2025-07-12 19:59:03,301 - notifications - INFO - Alerta de éxito: ¡Éxito! - Stock actualizado exitosamente
+2025-07-12 19:59:03,302 - notifications - INFO - Alerta establecida: {'message': 'Stock actualizado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 19:59:03,340 - notifications - INFO - Alerta obtenida: {'message': 'Stock actualizado exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-12 20:10:58,413 - notifications - INFO - Alerta de éxito: ¡Éxito! - Stock actualizado exitosamente
+2025-07-12 20:10:58,414 - notifications - INFO - Alerta establecida: {'message': 'Stock actualizado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 20:10:58,443 - notifications - INFO - Alerta obtenida: {'message': 'Stock actualizado exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-12 20:18:06,767 - notifications - INFO - Alerta de éxito: ¡Éxito! - Stock actualizado exitosamente
+2025-07-12 20:18:06,768 - notifications - INFO - Alerta establecida: {'message': 'Stock actualizado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 20:18:06,810 - notifications - INFO - Alerta obtenida: {'message': 'Stock actualizado exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-12 20:18:46,271 - notifications - INFO - Alerta de éxito: ¡Éxito! - Stock actualizado exitosamente
+2025-07-12 20:18:46,273 - notifications - INFO - Alerta establecida: {'message': 'Stock actualizado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 20:18:46,304 - notifications - INFO - Alerta obtenida: {'message': 'Stock actualizado exitosamente', 'title': '¡Éxito!', 'type': 'success'}
+2025-07-12 20:19:01,501 - notifications - INFO - Alerta de éxito: ¡Éxito! - Stock actualizado exitosamente
+2025-07-12 20:19:01,502 - notifications - INFO - Alerta establecida: {'message': 'Stock actualizado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-12 20:19:01,525 - notifications - INFO - Alerta obtenida: {'message': 'Stock actualizado exitosamente', 'title': '¡Éxito!', 'type': 'success'}

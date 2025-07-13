@@ -9,8 +9,55 @@ from app.service.producto_service import ServicioProducto
 from app.service.registro_temporal_service import ServicioRegistroTemporal
 from app.service.compra_service import ServicioCompra
 from app.service.reporte_servicio import ServicioReporte
+from app.service.notificacion_service import ServicioNotificacion
 
 main_bp = Blueprint('main', __name__)
+
+#NOTIFICACIONES
+@main_bp.route('/notificaciones')
+@login_required
+def obtener_notificaciones():
+    try:
+        id_usuario = session.get('user_id')
+        result = ServicioNotificacion.obtener_notificaciones_usuario(id_usuario)
+        
+        if result['success']:
+            return jsonify(result['notificaciones'])
+        else:
+            return jsonify([])
+            
+    except Exception as e:
+        return jsonify([])
+
+@main_bp.route('/notificaciones/contador')
+@login_required
+def contador_notificaciones():
+    try:
+        id_usuario = session.get('user_id')
+        result = ServicioNotificacion.obtener_contador_notificaciones(id_usuario)
+        
+        if result['success']:
+            return jsonify({'contador': result['contador']})
+        else:
+            return jsonify({'contador': 0})
+            
+    except Exception as e:
+        return jsonify({'contador': 0})
+
+@main_bp.route('/notificaciones/marcar-leidas', methods=['POST'])
+@login_required
+def marcar_todas_leidas():
+    try:
+        id_usuario = session.get('user_id')
+        result = ServicioNotificacion.marcar_todas_leidas(id_usuario)
+        
+        if result['success']:
+            return jsonify({'success': True, 'message': result['message']})
+        else:
+            return jsonify({'success': False, 'message': result['message']})
+            
+    except Exception as e:
+        return jsonify({'success': False, 'message': 'Error interno del servidor'})
 
 #REPORTES
 @main_bp.route('/reportes')
