@@ -158,3 +158,6 @@ with app.app_context(). See the documentation for more information.
 2025-07-13 11:42:38,852 - app - INFO - Sistema de logging configurado correctamente
 2025-07-13 11:42:39,245 - notifications - INFO - Inicializando scheduler de notificaciones
 2025-07-13 11:42:39,264 - notifications - INFO - Scheduler de notificaciones programado para ejecutarse diariamente a las 7:00 AM
+2025-07-13 11:43:42,721 - app - INFO - Sistema de logging configurado correctamente
+2025-07-13 11:43:42,952 - notifications - INFO - Inicializando scheduler de notificaciones
+2025-07-13 11:43:42,962 - notifications - INFO - Scheduler de notificaciones programado para ejecutarse diariamente a las 7:00 AM
