@@ -77,5 +77,4 @@ class NotificacionDAO:
             db.session.rollback()
             raise Exception(f"Error al marcar todas las notificaciones como leídas: {str(e)}")
         
-    #PARA VENCIMIENTO DE PRODUCTOS    
     

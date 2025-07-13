@@ -281,7 +281,6 @@ def producto_agregar():
                              categorias=[], 
                              marcas=[])
 
-
 #MARCA
 @main_bp.route('/marca/agregar', methods=['GET', 'POST'])
 @login_required
@@ -503,7 +502,7 @@ def guardar_compra():
             return redirect(url_for('auth.login'))
         
         fecha = request.form.get('fecha')
-        hora = request.form.get('hora')  # Nuevo campo
+        hora = request.form.get('hora')  
         vendedor_id = request.form.get('vendedor')
         establecimiento_id = request.form.get('establecimiento')
         

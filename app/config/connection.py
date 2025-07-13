@@ -8,7 +8,7 @@ def init_db(app):
     try:
         with app.app_context():
             db.engine.connect()
-            print("Conexión exitosa a la base de datos LenguajesDB")
+            print("Conexión exitosa a la base de datos")
     except Exception as e:
         print(f"Error de conexión a la base de datos: {e}")
         
