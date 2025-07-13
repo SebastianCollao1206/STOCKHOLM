@@ -161,3 +161,6 @@ with app.app_context(). See the documentation for more information.
 2025-07-13 11:43:42,721 - app - INFO - Sistema de logging configurado correctamente
 2025-07-13 11:43:42,952 - notifications - INFO - Inicializando scheduler de notificaciones
 2025-07-13 11:43:42,962 - notifications - INFO - Scheduler de notificaciones programado para ejecutarse diariamente a las 7:00 AM
+2025-07-13 12:01:46,542 - notifications - INFO - Alerta de éxito: ¡Éxito! - Stock actualizado exitosamente
+2025-07-13 12:01:46,545 - notifications - INFO - Alerta establecida: {'message': 'Stock actualizado exitosamente', 'type': 'success', 'title': '¡Éxito!'}
+2025-07-13 12:01:46,565 - notifications - INFO - Alerta obtenida: {'message': 'Stock actualizado exitosamente', 'title': '¡Éxito!', 'type': 'success'}
