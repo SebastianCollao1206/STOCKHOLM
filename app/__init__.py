@@ -19,7 +19,7 @@ def create_app():
     
     with app.app_context():
         from app.utils.scheduler import inicializar_scheduler
-        inicializar_scheduler()
+        inicializar_scheduler(app)
     
     from app.routes.auth import auth_bp
     from app.routes.main import main_bp

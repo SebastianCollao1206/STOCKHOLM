@@ -1,3 +1,34 @@
 2025-07-13 00:02:17,639 - app - INFO - Sistema de logging configurado correctamente
 2025-07-13 00:05:58,969 - app - INFO - Sistema de logging configurado correctamente
 2025-07-13 00:06:34,470 - app - INFO - Sistema de logging configurado correctamente
+2025-07-13 00:07:12,559 - app - INFO - Sistema de logging configurado correctamente
+2025-07-13 00:07:13,326 - notifications - INFO - Inicializando scheduler de notificaciones
+2025-07-13 00:07:13,375 - notifications - INFO - Scheduler de notificaciones programado para ejecutarse diariamente a las 7:00 AM
+2025-07-13 00:19:36,006 - notifications - INFO - Alerta de éxito: Hola Sebastian - ¡Bienvenido de vuelta!
+2025-07-13 00:19:36,008 - notifications - INFO - Alerta establecida: {'message': '¡Bienvenido de vuelta!', 'type': 'success', 'title': 'Hola Sebastian'}
+2025-07-13 00:19:36,076 - notifications - INFO - Alerta obtenida: {'message': '¡Bienvenido de vuelta!', 'title': 'Hola Sebastian', 'type': 'success'}
+2025-07-13 00:21:14,001 - app - INFO - Sistema de logging configurado correctamente
+2025-07-13 00:21:14,502 - notifications - INFO - Inicializando scheduler de notificaciones
+2025-07-13 00:21:14,529 - notifications - INFO - Scheduler de notificaciones programado para ejecutarse diariamente a las 7:00 AM
+2025-07-13 00:23:00,017 - notifications - INFO - Iniciando proceso automático de notificaciones de vencimiento
+2025-07-13 00:23:00,019 - notifications - ERROR - Error crítico en proceso de notificaciones: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-07-13 00:29:51,539 - app - INFO - Sistema de logging configurado correctamente
+2025-07-13 00:30:49,082 - app - INFO - Sistema de logging configurado correctamente
+2025-07-13 00:30:49,377 - notifications - INFO - Inicializando scheduler de notificaciones
+2025-07-13 00:30:49,391 - notifications - INFO - Scheduler de notificaciones programado para ejecutarse diariamente a las 7:00 AM
+2025-07-13 00:30:50,480 - app - INFO - Sistema de logging configurado correctamente
+2025-07-13 00:30:50,701 - notifications - INFO - Inicializando scheduler de notificaciones
+2025-07-13 00:30:50,712 - notifications - INFO - Scheduler de notificaciones programado para ejecutarse diariamente a las 7:00 AM
+2025-07-13 00:32:00,013 - notifications - INFO - Iniciando proceso automático de notificaciones de vencimiento
+2025-07-13 00:32:00,013 - notifications - INFO - Iniciando proceso automático de notificaciones de vencimiento
+2025-07-13 00:32:00,094 - notifications - INFO - Proceso de notificaciones completado exitosamente para 5 usuarios
+2025-07-13 00:33:41,886 - app - INFO - Sistema de logging configurado correctamente
+2025-07-13 00:33:42,138 - notifications - INFO - Inicializando scheduler de notificaciones
+2025-07-13 00:33:42,151 - notifications - INFO - Scheduler de notificaciones programado para ejecutarse diariamente a las 7:00 AM
+2025-07-13 00:33:54,347 - app - INFO - Sistema de logging configurado correctamente
+2025-07-13 00:33:54,544 - notifications - INFO - Inicializando scheduler de notificaciones
+2025-07-13 00:33:54,554 - notifications - INFO - Scheduler de notificaciones programado para ejecutarse diariamente a las 7:00 AM
