@@ -17,6 +17,9 @@ def create_app():
         from app.utils.notificaciones import Notificacion
         return dict(alert=Notificacion.get_alert())
     
+    with app.app_context():
+        from app.utils.scheduler import inicializar_scheduler
+        inicializar_scheduler()
     
     from app.routes.auth import auth_bp
     from app.routes.main import main_bp
