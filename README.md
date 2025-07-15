@@ -68,5 +68,5 @@ Para obtener información detallada sobre todas las funcionalidades disponibles,
 ## 🛠️ Tecnologías Utilizadas
 
 - **Backend:** Flask (Python)
-- **Base de Datos:** SQL
+- **Base de Datos:** MySQL
 - **Frontend:** HTML, CSS, JavaScript
